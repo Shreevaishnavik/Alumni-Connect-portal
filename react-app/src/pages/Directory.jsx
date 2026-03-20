@@ -1,3 +1,4 @@
+import API_BASE from '../config/api';
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
@@ -20,11 +21,11 @@ const Directory = () => {
       if (search) params.search = search;
       
       const [dirRes, meRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/users/directory', {
+        axios.get(`${API_BASE}/api/users/directory`, {
           headers: { Authorization: `Bearer ${token}` },
           params
         }),
-        axios.get('http://localhost:5000/api/users/me', {
+        axios.get(`${API_BASE}/api/users/me`, {
           headers: { Authorization: `Bearer ${token}` }
         })
       ]);

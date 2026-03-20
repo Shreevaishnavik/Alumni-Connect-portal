@@ -1,3 +1,4 @@
+import API_BASE from '../config/api';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
@@ -16,13 +17,13 @@ const Networking = () => {
   const fetchData = async () => {
     try {
       // Fetch conversations
-      const convRes = await axios.get('http://localhost:5000/api/messages/conversations/list', {
+      const convRes = await axios.get(`${API_BASE}/api/messages/conversations/list`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setConversations(convRes.data);
 
       // Fetch pending connection requests
-      const meRes = await axios.get('http://localhost:5000/api/users/me', {
+      const meRes = await axios.get(`${API_BASE}/api/users/me`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (meRes.data?.connectionRequests) {

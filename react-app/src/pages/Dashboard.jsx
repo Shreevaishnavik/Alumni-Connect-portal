@@ -1,3 +1,4 @@
+import API_BASE from '../config/api';
 import React, { useEffect, useState } from 'react';
 import useAuth from '../hooks/useAuth';
 import axios from 'axios';
@@ -11,12 +12,12 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (token) {
-      axios.get('http://localhost:5000/api/users/me', { headers: { Authorization: `Bearer ${token}` } })
+      axios.get(`${API_BASE}/api/users/me`, { headers: { Authorization: `Bearer ${token}` } })
         .then(res => setMeData(res.data))
         .catch(console.error);
         
       if (user?.role === 'alumni') {
-        axios.get('http://localhost:5000/api/jobs/my/listings', { headers: { Authorization: `Bearer ${token}` } })
+        axios.get(`${API_BASE}/api/jobs/my/listings`, { headers: { Authorization: `Bearer ${token}` } })
           .then(res => {
             const listings = res.data;
             const totalApplicants = listings.reduce((acc, curr) => acc + curr.applicants.length, 0);
@@ -27,8 +28,8 @@ const Dashboard = () => {
       
       if (user?.role === 'admin') {
         Promise.all([
-          axios.get('http://localhost:5000/api/users/admin/all?limit=1000', { headers: { Authorization: `Bearer ${token}` } }),
-          axios.get('http://localhost:5000/api/jobs?limit=1000', { headers: { Authorization: `Bearer ${token}` } })
+          axios.get(`${API_BASE}/api/users/admin/all?limit=1000`, { headers: { Authorization: `Bearer ${token}` } }),
+          axios.get(`${API_BASE}/api/jobs?limit=1000`, { headers: { Authorization: `Bearer ${token}` } })
         ]).then(([usersRes, jobsRes]) => {
           setStats({ usersCount: usersRes.data.length, jobsCount: jobsRes.data.length });
         }).catch(console.error);

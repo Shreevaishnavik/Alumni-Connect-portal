@@ -1,3 +1,4 @@
+import API_BASE from '../config/api';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
@@ -16,7 +17,7 @@ const Notifications = () => {
 
   const fetchNotifications = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/notify', {
+      const res = await axios.get(`${API_BASE}/api/notify`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setNotifications(res.data);
@@ -33,7 +34,7 @@ const Notifications = () => {
 
   const markAllRead = async () => {
     try {
-      await axios.put('http://localhost:5000/api/notify/read-all', {}, {
+      await axios.put(`${API_BASE}/api/notify/read-all`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchNotifications();

@@ -1,3 +1,4 @@
+import API_BASE from '../config/api';
 import React, { useState } from 'react';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
@@ -21,7 +22,7 @@ const PostJob = () => {
         deadline: formData.deadline ? new Date(formData.deadline).toISOString() : null
       };
 
-      await axios.post('http://localhost:5000/api/jobs', payload, {
+      await axios.post(`${API_BASE}/api/jobs`, payload, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert('Job posted successfully!');

@@ -1,3 +1,4 @@
+import API_BASE from '../config/api';
 import React, { useState } from 'react';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
@@ -13,7 +14,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/users/login', { email, password });
+      const res = await axios.post(`${API_BASE}/api/users/login`, { email, password });
       login(res.data.token, res.data.user);
       navigate('/dashboard');
     } catch (err) {

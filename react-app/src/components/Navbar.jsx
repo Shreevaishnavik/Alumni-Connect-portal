@@ -1,3 +1,4 @@
+import API_BASE from '../config/api';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
@@ -10,7 +11,7 @@ const Navbar = () => {
 
   useEffect(() => {
     if (user && token) {
-      axios.get('http://localhost:5000/api/notify/unread-count', {
+      axios.get(`${API_BASE}/api/notify/unread-count`, {
         headers: { Authorization: `Bearer ${token}` }
       }).then(res => setUnreadCount(res.data.count))
         .catch(() => {});

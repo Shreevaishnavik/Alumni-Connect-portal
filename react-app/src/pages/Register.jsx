@@ -1,3 +1,4 @@
+import API_BASE from '../config/api';
 import React, { useState } from 'react';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
@@ -17,7 +18,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const payload = { ...formData, batch: Number(formData.batch) };
-      const res = await axios.post('http://localhost:5000/api/users/register', payload);
+      const res = await axios.post(`${API_BASE}/api/users/register`, payload);
       login(res.data.token, res.data.user);
       navigate('/dashboard');
     } catch (err) {

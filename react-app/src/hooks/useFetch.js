@@ -1,3 +1,4 @@
+import API_BASE from '../config/api';
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
@@ -12,7 +13,7 @@ const useFetch = (url, dependencies = []) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`http://localhost:5000/api${url}`, {
+        const response = await axios.get(`${API_BASE}/api${url}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setData(response.data);

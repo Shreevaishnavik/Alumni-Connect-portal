@@ -1,3 +1,4 @@
+import API_BASE from '../config/api';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
@@ -15,7 +16,7 @@ const AdminPanel = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/users/admin/all', {
+      const res = await axios.get(`${API_BASE}/api/users/admin/all`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUsers(res.data);
@@ -26,7 +27,7 @@ const AdminPanel = () => {
     try {
       // Actually /api/jobs only returns active jobs and needs no admin check,
       // But for admin to delete, they can use it.
-      const res = await axios.get('http://localhost:5000/api/jobs', {
+      const res = await axios.get(`${API_BASE}/api/jobs`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setJobs(res.data);

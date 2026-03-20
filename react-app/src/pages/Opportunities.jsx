@@ -1,3 +1,4 @@
+import API_BASE from '../config/api';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
@@ -14,7 +15,7 @@ const Opportunities = () => {
       if (filters.type !== 'all') params.type = filters.type;
       if (filters.skills) params.skills = filters.skills;
 
-      const res = await axios.get('http://localhost:5000/api/jobs', {
+      const res = await axios.get(`${API_BASE}/api/jobs`, {
         headers: { Authorization: `Bearer ${token}` },
         params
       });

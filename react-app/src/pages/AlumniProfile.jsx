@@ -1,3 +1,4 @@
+import API_BASE from '../config/api';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -19,7 +20,7 @@ const AlumniProfile = () => {
     try {
       const [profRes, meRes] = await Promise.all([
         axios.get(`http://localhost:5000/api/users/profile/${id}`, { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get('http://localhost:5000/api/users/me', { headers: { Authorization: `Bearer ${token}` } })
+        axios.get(`${API_BASE}/api/users/me`, { headers: { Authorization: `Bearer ${token}` } })
       ]);
       setProfile(profRes.data);
       setEditForm(profRes.data);
@@ -62,7 +63,7 @@ const AlumniProfile = () => {
       // Remove undefined keys to keep the payload clean
       Object.keys(payload).forEach(k => payload[k] === undefined && delete payload[k]);
 
-      await axios.put('http://localhost:5000/api/users/profile', payload, {
+      await axios.put(`${API_BASE}/api/users/profile`, payload, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setIsEditing(false);
