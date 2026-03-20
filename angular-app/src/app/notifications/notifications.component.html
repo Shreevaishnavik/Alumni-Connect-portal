@@ -1,0 +1,35 @@
+<div>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <h2>Notifications</h2>
+    <div *ngIf="(unreadCount$ | async) as count">
+      <button *ngIf="count > 0" class="btn-primary" (click)="markAllRead()">Mark All Read ({{ count }})</button>
+    </div>
+  </div>
+
+  <div *ngIf="notifications.length === 0" style="color: var(--text-secondary)">
+    No notifications.
+  </div>
+
+  <div *ngFor="let notif of notifications" 
+       [style.background]="notif.read ? 'var(--card-bg)' : '#E8F5E9'"
+       class="card"
+       style="display: flex; gap: 15px; align-items: start; padding: 15px; cursor: pointer; transition: 0.2s"
+       (click)="markAsRead(notif._id, notif.read)">
+    
+    <div style="font-size: 24px; padding-top: 2px;">
+      <span *ngIf="notif.type === 'new_message'">💬</span>
+      <span *ngIf="notif.type === 'connection_request' || notif.type === 'connection_accepted'">🤝</span>
+      <span *ngIf="notif.type === 'job_application' || notif.type === 'application_status'">💼</span>
+    </div>
+    
+    <div style="flex: 1">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+        <strong style="color: var(--text-primary)">{{ notif.fromUser?.name || 'System' }}</strong>
+        <small style="color: var(--text-secondary)">{{ notif.createdAt | date:'shortTime' }}</small>
+      </div>
+      <p style="margin: 0; color: var(--text-secondary)">{{ notif.message }}</p>
+    </div>
+    
+    <div *ngIf="!notif.read" style="width: 10px; height: 10px; border-radius: 50%; background: var(--success); margin-top: 8px;"></div>
+  </div>
+</div>

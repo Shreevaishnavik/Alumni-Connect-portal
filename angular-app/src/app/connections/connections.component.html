@@ -1,0 +1,31 @@
+<div>
+  <h2>Networking & Connections</h2>
+
+  <div class="card" *ngIf="pendingRequests.length > 0" style="margin-bottom: 20px;">
+    <h3>Pending Requests</h3>
+    <div *ngFor="let req of pendingRequests" style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid var(--border);">
+      <div>
+        <strong style="font-size: 16px;">{{ req.from.name }}</strong>
+        <p style="margin: 0; font-size: 14px; color: var(--text-secondary);">{{ req.from.designation }}</p>
+      </div>
+      <button class="btn-primary" (click)="acceptRequest(req.from._id)">Accept</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Recent Conversations</h3>
+    <div *ngIf="conversations.length === 0" style="color: var(--text-secondary)">No conversations yet.</div>
+    <div *ngFor="let conv of conversations" 
+         (click)="openChat(conv)"
+         style="cursor: pointer; padding: 15px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 15px;">
+      
+      <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 20px;">
+        {{ getOtherParticipant(conv.participants).name?.charAt(0) || '?' }}
+      </div>
+      <div style="flex: 1">
+        <h4 style="margin: 0 0 5px 0;">{{ getOtherParticipant(conv.participants).name }}</h4>
+        <p style="margin: 0; color: var(--text-secondary); font-size: 14px;">{{ getOtherParticipant(conv.participants).designation || 'Alumni' }}</p>
+      </div>
+    </div>
+  </div>
+</div>

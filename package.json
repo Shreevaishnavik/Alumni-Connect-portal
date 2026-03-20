@@ -1,0 +1,11 @@
+{
+  "name": "alumni-connect",
+  "version": "1.0.0",
+  "description": "Alumni Connect - Full Stack Application",
+  "scripts": {
+    "start": "concurrently --names \"BACKEND,REACT,ANGULAR\" --prefix-colors \"bgBlue.bold,bgGreen.bold,bgRed.bold\" \"npm start --prefix backend\" \"npm run dev --prefix react-app\" \"npm start --prefix angular-app\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

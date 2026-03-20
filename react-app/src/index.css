@@ -1,0 +1,71 @@
+:root {
+  --primary: #1E3A5F;
+  --primary-light: #2E5F8A;
+  --accent: #4A90D9;
+  --bg: #F4F7FB;
+  --card-bg: #FFFFFF;
+  --text-primary: #1A1A2E;
+  --text-secondary: #666;
+  --border: #E0E7EF;
+  --success: #27AE60;
+  --warning: #F39C12;
+  --danger: #E74C3C;
+  --info: #3498DB;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text-primary);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin-bottom: 16px;
+}
+
+button {
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:active {
+  background-color: var(--primary-light);
+}
+
+.btn-secondary {
+  background-color: white;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+input, select, textarea {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.auth-container {
+  max-width: 400px;
+  margin: 40px auto;
+  text-align: center;
+}
