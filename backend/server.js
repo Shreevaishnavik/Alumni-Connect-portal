@@ -11,17 +11,23 @@ const socketHandler = require('./socket/socketHandler');
 const app = express();
 const server = http.createServer(app);
 
+// Determine allowed origins based on environment
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(',')
+  : ['http://localhost:5173', 'http://localhost:4200'];
+
 // Attach Socket.io with CORS
 const io = new Server(server, {
   cors: {
-    origin: ['http://localhost:5173', 'http://localhost:4200'],
+    origin: process.env.NODE_ENV === 'production' ? '*' : allowedOrigins,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
   }
 });
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:4200'],
+  origin: process.env.NODE_ENV === 'production' ? '*' : allowedOrigins,
+  credentials: true
 }));
 app.use(express.json());
 
@@ -29,6 +35,11 @@ app.use(express.json());
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));
+
+// Health check
+app.get('/', (req, res) => {
+  res.json({ status: 'Alumni Connect API is running ✅', version: '1.0.0' });
+});
 
 // Mount API Gateway
 app.use('/api', apiGateway);
