@@ -83,6 +83,14 @@ const MyProfile = () => {
     admin: '#E74C3C'
   };
 
+  // Role-aware field labels:
+  // Students: "College/University" and "Course/Program" instead of Company/Designation
+  const isStudent = profile?.role === 'student';
+  const companyLabel     = isStudent ? 'College / University' : 'Company';
+  const companyPlaceholder = isStudent ? 'e.g. MIT, IIT Bombay, VIT...' : 'Company name';
+  const designationLabel   = isStudent ? 'Course / Program' : 'Designation';
+  const designationPlaceholder = isStudent ? 'e.g. B.Tech CSE, BCA, MCA...' : 'Your role/title';
+
   if (loading) return (
     <div style={{ display: 'flex', justifyContent: 'center', padding: '60px' }}>
       <div style={{ width: '40px', height: '40px', border: '4px solid var(--border)', borderTop: '4px solid var(--primary)', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
@@ -113,16 +121,22 @@ const MyProfile = () => {
         <form onSubmit={handleSave}>
           <label>Full Name</label>
           <input type="text" value={editForm.name} onChange={e => setEditForm({ ...editForm, name: e.target.value })} placeholder="Full Name" />
-          <label>Company</label>
-          <input type="text" value={editForm.company} onChange={e => setEditForm({ ...editForm, company: e.target.value })} placeholder="Company" />
-          <label>Designation</label>
-          <input type="text" value={editForm.designation} onChange={e => setEditForm({ ...editForm, designation: e.target.value })} placeholder="Designation" />
+
+          <label>{companyLabel}</label>
+          <input type="text" value={editForm.company} onChange={e => setEditForm({ ...editForm, company: e.target.value })} placeholder={companyPlaceholder} />
+
+          <label>{designationLabel}</label>
+          <input type="text" value={editForm.designation} onChange={e => setEditForm({ ...editForm, designation: e.target.value })} placeholder={designationPlaceholder} />
+
           <label>Batch Year</label>
-          <input type="number" value={editForm.batch} onChange={e => setEditForm({ ...editForm, batch: e.target.value })} placeholder="Batch Year" />
+          <input type="number" value={editForm.batch} onChange={e => setEditForm({ ...editForm, batch: e.target.value })} placeholder="e.g. 2025" />
+
           <label>Department</label>
-          <input type="text" value={editForm.department} onChange={e => setEditForm({ ...editForm, department: e.target.value })} placeholder="Department" />
+          <input type="text" value={editForm.department} onChange={e => setEditForm({ ...editForm, department: e.target.value })} placeholder="e.g. Computer Science" />
+
           <label>Bio</label>
           <textarea value={editForm.bio} onChange={e => setEditForm({ ...editForm, bio: e.target.value })} placeholder="Tell us about yourself..." rows="4" />
+
           <label>Skills</label>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '10px' }}>
             {editForm.skills.map((skill, i) => (
@@ -147,9 +161,17 @@ const MyProfile = () => {
         </form>
       ) : (
         <div>
-          <p style={{ color: 'var(--text-secondary)', margin: '0 0 5px 0', fontSize: '16px' }}>
-            {profile.designation}{profile.company && ` at ${profile.company}`}
-          </p>
+          {/* Role-aware display */}
+          {profile.designation && (
+            <p style={{ color: 'var(--text-secondary)', margin: '0 0 5px 0', fontSize: '16px' }}>
+              <strong>{designationLabel}:</strong> {profile.designation}
+            </p>
+          )}
+          {profile.company && (
+            <p style={{ color: 'var(--text-secondary)', margin: '0 0 10px 0', fontSize: '16px' }}>
+              <strong>{companyLabel}:</strong> {profile.company}
+            </p>
+          )}
           <p style={{ marginBottom: '5px' }}><strong>Email:</strong> {profile.email}</p>
           {profile.batch && <p style={{ marginBottom: '5px' }}><strong>Batch:</strong> {profile.batch}</p>}
           {profile.department && <p style={{ marginBottom: '5px' }}><strong>Department:</strong> {profile.department}</p>}

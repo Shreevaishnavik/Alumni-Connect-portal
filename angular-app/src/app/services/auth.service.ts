@@ -1,11 +1,18 @@
 import { Injectable } from '@angular/core';
 
+// Determine the backend URL:
+// - In production (Render): frontend and backend are on the same domain, use same origin
+// - Locally: backend is on localhost:5000
+const BACKEND_URL = window.location.hostname === 'localhost'
+  ? 'http://localhost:5000'
+  : window.location.origin;
+
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = 'http://localhost:5000/api';
+  apiUrl = `${BACKEND_URL}/api`;
 
   constructor() {
-    // Read optional token from URL
+    // Read optional token/userId passed via URL query params from the React app
     const urlParams = new URLSearchParams(window.location.search);
     const urlToken = urlParams.get('token');
     const urlUserId = urlParams.get('userId');

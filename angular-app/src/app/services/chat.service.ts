@@ -10,15 +10,23 @@ export interface Message {
   timestamp: Date | string;
 }
 
+// Determine the backend URL:
+// - In production (Render): same origin as the Angular app
+// - Locally: backend is on localhost:5000
+const BACKEND_URL = window.location.hostname === 'localhost'
+  ? 'http://localhost:5000'
+  : window.location.origin;
+
 @Injectable({ providedIn: 'root' })
 export class ChatService {
   private socket: Socket;
   private messageSubject = new BehaviorSubject<Message[]>([]);
   messages$ = this.messageSubject.asObservable();
-  private apiUrl = 'http://localhost:5000/api';
 
   constructor(private auth: AuthService, private http: HttpClient) {
-    this.socket = io('http://localhost:5000');
+    this.socket = io(BACKEND_URL, {
+      auth: { token: this.auth.getToken() }
+    });
     const userId = this.auth.getCurrentUserId();
     if (userId) this.socket.emit('join', userId);
 
@@ -29,24 +37,24 @@ export class ChatService {
   }
 
   loadHistory(otherUserId: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/messages/${otherUserId}`,
+    return this.http.get(`${this.auth.apiUrl}/messages/${otherUserId}`,
       { headers: this.auth.getHeaders() });
   }
 
   getConversations(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/messages/conversations/list`,
+    return this.http.get(`${this.auth.apiUrl}/messages/conversations/list`,
       { headers: this.auth.getHeaders() });
   }
 
   sendMessage(toUserId: string, text: string): void {
     const senderId = this.auth.getCurrentUserId();
     if (!senderId) return;
-    
+
     this.socket.emit('send-message', { to: toUserId, text, senderId });
-    
-    this.http.post(`${this.apiUrl}/messages/${toUserId}`, { text },
+
+    this.http.post(`${this.auth.apiUrl}/messages/${toUserId}`, { text },
       { headers: this.auth.getHeaders() }).subscribe();
-      
+
     const current = this.messageSubject.getValue();
     this.messageSubject.next([...current, { text, senderId, timestamp: new Date() }]);
   }
