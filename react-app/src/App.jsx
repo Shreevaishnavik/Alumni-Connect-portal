@@ -1,3 +1,4 @@
+import './App.css';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ToastProvider } from './context/ToastContext';
@@ -24,7 +25,8 @@ function App() {
       <ToastProvider>
         <Router>
           <Navbar />
-          <div className="container" style={{ padding: '20px' }}>
+          {/* main-content adds padding-top: 70px to clear the fixed navbar */}
+          <div className="main-content">
             <Routes>
               <Route path="/" element={<Navigate to="/dashboard" />} />
               <Route path="/login" element={<Login />} />

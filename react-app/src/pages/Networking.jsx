@@ -1,4 +1,4 @@
-import API_BASE from '../config/api';
+import API_BASE, { ANGULAR_URL } from '../config/api';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
@@ -55,7 +55,8 @@ const Networking = () => {
   const openChat = (conv) => {
     const other = getOtherParticipant(conv.participants);
     if (other._id) {
-      window.location.href = `http://localhost:4200/chat/${other._id}?token=${token}&userId=${user?.id}`;
+      const backendUrl = encodeURIComponent(API_BASE || window.location.origin);
+      window.location.href = `${ANGULAR_URL}/chat/${other._id}?token=${token}&userId=${user?.id}&backendUrl=${backendUrl}`;
     }
   };
 

@@ -10,13 +10,6 @@ export interface Message {
   timestamp: Date | string;
 }
 
-// Determine the backend URL:
-// - In production (Render): same origin as the Angular app
-// - Locally: backend is on localhost:5000
-const BACKEND_URL = window.location.hostname === 'localhost'
-  ? 'http://localhost:5000'
-  : window.location.origin;
-
 @Injectable({ providedIn: 'root' })
 export class ChatService {
   private socket: Socket;
@@ -24,9 +17,13 @@ export class ChatService {
   messages$ = this.messageSubject.asObservable();
 
   constructor(private auth: AuthService, private http: HttpClient) {
-    this.socket = io(BACKEND_URL, {
+    // Use the dynamic backend URL (set by AuthService from URL params → localStorage)
+    const backendUrl = this.auth.getBackendUrl();
+
+    this.socket = io(backendUrl, {
       auth: { token: this.auth.getToken() }
     });
+
     const userId = this.auth.getCurrentUserId();
     if (userId) this.socket.emit('join', userId);
 
