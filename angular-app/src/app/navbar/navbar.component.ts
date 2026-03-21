@@ -13,7 +13,12 @@ import { CommonModule } from '@angular/common';
 export class NavbarComponent implements OnInit {
   unreadCount = 0;
   userRole: string | null = null;
-  reactBase = 'http://localhost:5173';
+  // Dynamic base URL for React app links:
+  // - In dev: Angular runs on localhost → React is on localhost:5173
+  // - In production: both are on the same Render domain → window.location.origin
+  reactBase = window.location.hostname === 'localhost'
+    ? 'http://localhost:5173'
+    : window.location.origin;
 
   constructor(
     private notificationService: NotificationService,
