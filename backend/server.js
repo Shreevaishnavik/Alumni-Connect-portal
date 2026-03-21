@@ -42,12 +42,20 @@ mongoose.connect(process.env.MONGO_URI)
 // Mount API Gateway
 app.use('/api', apiGateway);
 
-// Serve React build in production
+// ─── Serve Static Builds in Production ───────────────────────────────────────
 if (isProduction) {
-  const reactBuild = path.join(__dirname, '../react-app/dist');
-  app.use(express.static(reactBuild));
+  const reactBuild   = path.join(__dirname, '../react-app/dist');
+  const angularBuild = path.join(__dirname, '../angular-app/dist/angular-app/browser');
 
-  // All non-API routes serve the React app
+  // Angular chat app — served at /chat-app/*
+  // Must be registered BEFORE the React catch-all below
+  app.use('/chat-app', express.static(angularBuild));
+  app.get('/chat-app/*', (req, res) => {
+    res.sendFile(path.join(angularBuild, 'index.html'));
+  });
+
+  // React app — serves everything else
+  app.use(express.static(reactBuild));
   app.get('*', (req, res) => {
     res.sendFile(path.join(reactBuild, 'index.html'));
   });

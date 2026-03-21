@@ -15,10 +15,16 @@ export class AuthService {
       localStorage.setItem('token', urlToken);
       localStorage.setItem('userId', urlUserId);
     }
-    // Store the backend URL if provided; fall back to saved value or localhost for dev
-    if (urlBackend) {
+    // Store the backend URL if provided via URL param.
+    // Reject Vite dev server URLs (port 5173) — those are a past bug where
+    // API_BASE was empty string and window.location.origin (Vite) leaked in.
+    if (urlBackend && !urlBackend.includes('5173')) {
       localStorage.setItem('backendUrl', urlBackend);
+    } else if (urlBackend && urlBackend.includes('5173')) {
+      // Clear the bad value so the correct fallback is used
+      localStorage.removeItem('backendUrl');
     }
+
 
     const savedBackend = localStorage.getItem('backendUrl');
     const defaultBackend = window.location.hostname === 'localhost'
