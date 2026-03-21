@@ -19,13 +19,15 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError('');
     try {
       const payload = { ...formData, batch: Number(formData.batch) };
       const res = await axios.post(`${API_BASE}/api/users/register`, payload);
       login(res.data.token, res.data.user);
-      navigate('/dashboard');
+      // replace: true so back button doesn't return to register form after registering
+      navigate('/dashboard', { replace: true });
     } catch (err) {
-      setError(err.response?.data?.message || 'Registration failed');
+      setError(err.response?.data?.message || 'Registration failed. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -34,10 +36,10 @@ const Register = () => {
   return (
     <div className="auth-container card">
       <h2>Register</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: 'var(--danger)', marginBottom: '12px' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
-        <input type="text" name="name" placeholder="Full Name" onChange={handleChange} required />
-        <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
+        <input type="text" name="name" placeholder="Full Name" onChange={handleChange} required autoComplete="name" />
+        <input type="email" name="email" placeholder="Email" onChange={handleChange} required autoComplete="email" />
         <div style={{ position: 'relative' }}>
           <input
             type={showPassword ? 'text' : 'password'}
@@ -46,11 +48,13 @@ const Register = () => {
             onChange={handleChange}
             required
             style={{ paddingRight: '40px' }}
+            autoComplete="new-password"
           />
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
             style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-60%)', background: 'none', border: 'none', cursor: 'pointer', padding: 0, fontSize: '16px' }}
+            aria-label={showPassword ? 'Hide password' : 'Show password'}
           >
             {showPassword ? '🙈' : '👁️'}
           </button>
@@ -65,7 +69,7 @@ const Register = () => {
           {loading ? 'Please wait...' : 'Register'}
         </button>
       </form>
-      <p>Already have an account? <Link to="/login">Login here</Link></p>
+      <p style={{ marginTop: '16px' }}>Already have an account? <Link to="/login">Login here</Link></p>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { AuthProvider } from './context/AuthContext';
 import { ToastProvider } from './context/ToastContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Navbar from './components/Navbar';
+import useAuth from './hooks/useAuth';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -19,19 +20,37 @@ import Notifications from './pages/Notifications';
 import Networking from './pages/Networking';
 import MyProfile from './pages/MyProfile';
 
+// Smart root redirect: logged-in users go to dashboard, guests go to login
+// This replaces the hardcoded <Navigate to="/dashboard" /> that always showed
+// dashboard even when the user had no valid session
+const RootRedirect = () => {
+  const { user } = useAuth();
+  return <Navigate to={user ? '/dashboard' : '/login'} replace />;
+};
+
+// Wrap login/register so logged-in users are redirected away from auth pages
+const AuthRoute = ({ children }) => {
+  const { user } = useAuth();
+  if (user) return <Navigate to="/dashboard" replace />;
+  return children;
+};
+
 function App() {
   return (
     <AuthProvider>
       <ToastProvider>
         <Router>
           <Navbar />
-          {/* main-content adds padding-top: 70px to clear the fixed navbar */}
           <div className="main-content">
             <Routes>
-              <Route path="/" element={<Navigate to="/dashboard" />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
+              {/* Root: auth-aware redirect — no more hardcoded /dashboard */}
+              <Route path="/" element={<RootRedirect />} />
 
+              {/* Public auth pages — redirect away if already logged in */}
+              <Route path="/login" element={<AuthRoute><Login /></AuthRoute>} />
+              <Route path="/register" element={<AuthRoute><Register /></AuthRoute>} />
+
+              {/* Protected pages */}
               <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
               <Route path="/directory" element={<ProtectedRoute><Directory /></ProtectedRoute>} />
               <Route path="/alumni/:id" element={<ProtectedRoute><AlumniProfile /></ProtectedRoute>} />
@@ -46,6 +65,9 @@ function App() {
               <Route path="/my-applications" element={<ProtectedRoute requiredRole="student"><MyApplications /></ProtectedRoute>} />
 
               <Route path="/admin" element={<ProtectedRoute requiredRole="admin"><AdminPanel /></ProtectedRoute>} />
+
+              {/* Catch-all: any unknown route goes to root which then redirects correctly */}
+              <Route path="*" element={<RootRedirect />} />
             </Routes>
           </div>
         </Router>

@@ -16,12 +16,14 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError('');
     try {
       const res = await axios.post(`${API_BASE}/api/users/login`, { email, password });
       login(res.data.token, res.data.user);
-      navigate('/dashboard');
+      // replace: true so back button doesn't return to login form after logging in
+      navigate('/dashboard', { replace: true });
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
+      setError(err.response?.data?.message || 'Login failed. Check your credentials.');
     } finally {
       setLoading(false);
     }
@@ -30,9 +32,16 @@ const Login = () => {
   return (
     <div className="auth-container card">
       <h2>Login to Alumni Connect</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: 'var(--danger)', marginBottom: '12px' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
-        <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          required
+          autoComplete="email"
+        />
         <div style={{ position: 'relative' }}>
           <input
             type={showPassword ? 'text' : 'password'}
@@ -41,11 +50,13 @@ const Login = () => {
             onChange={e => setPassword(e.target.value)}
             required
             style={{ paddingRight: '40px' }}
+            autoComplete="current-password"
           />
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
             style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-60%)', background: 'none', border: 'none', cursor: 'pointer', padding: 0, fontSize: '16px' }}
+            aria-label={showPassword ? 'Hide password' : 'Show password'}
           >
             {showPassword ? '🙈' : '👁️'}
           </button>
@@ -54,7 +65,7 @@ const Login = () => {
           {loading ? 'Please wait...' : 'Login'}
         </button>
       </form>
-      <p>Don't have an account? <Link to="/register">Register here</Link></p>
+      <p style={{ marginTop: '16px' }}>Don't have an account? <Link to="/register">Register here</Link></p>
     </div>
   );
 };
