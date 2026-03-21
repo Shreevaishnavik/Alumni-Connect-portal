@@ -1,0 +1,4570 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.gitignore
+angular-app/.editorconfig
+angular-app/.gitignore
+angular-app/angular.json
+angular-app/package.json
+angular-app/README.md
+angular-app/src/app/app.component.css
+angular-app/src/app/app.component.html
+angular-app/src/app/app.component.spec.ts
+angular-app/src/app/app.component.ts
+angular-app/src/app/app.config.ts
+angular-app/src/app/app.routes.ts
+angular-app/src/app/chat/chat.component.css
+angular-app/src/app/chat/chat.component.html
+angular-app/src/app/chat/chat.component.ts
+angular-app/src/app/connections/connections.component.html
+angular-app/src/app/connections/connections.component.ts
+angular-app/src/app/navbar/navbar.component.html
+angular-app/src/app/navbar/navbar.component.ts
+angular-app/src/app/notifications/notifications.component.html
+angular-app/src/app/notifications/notifications.component.ts
+angular-app/src/app/services/auth.service.ts
+angular-app/src/app/services/chat.service.ts
+angular-app/src/app/services/notification.service.ts
+angular-app/src/assets/.gitkeep
+angular-app/src/favicon.ico
+angular-app/src/index.html
+angular-app/src/main.ts
+angular-app/src/styles.css
+angular-app/tsconfig.app.json
+angular-app/tsconfig.json
+angular-app/tsconfig.spec.json
+backend/gateway/index.js
+backend/middleware/authMiddleware.js
+backend/middleware/logger.js
+backend/middleware/rateLimiter.js
+backend/middleware/roleCheck.js
+backend/middleware/validator.js
+backend/models/Conversation.js
+backend/models/Job.js
+backend/models/Notification.js
+backend/models/User.js
+backend/package.json
+backend/server.js
+backend/services/jobs/job.controller.js
+backend/services/jobs/job.routes.js
+backend/services/messages/message.controller.js
+backend/services/messages/message.routes.js
+backend/services/notify/notify.controller.js
+backend/services/notify/notify.routes.js
+backend/services/users/user.controller.js
+backend/services/users/user.routes.js
+backend/socket/socketHandler.js
+package.json
+react-app/.env.production
+react-app/.gitignore
+react-app/eslint.config.js
+react-app/index.html
+react-app/package.json
+react-app/public/favicon.svg
+react-app/public/icons.svg
+react-app/README.md
+react-app/src/App.css
+react-app/src/App.jsx
+react-app/src/assets/hero.png
+react-app/src/assets/react.svg
+react-app/src/assets/vite.svg
+react-app/src/components/ApplicationStatusBadge.jsx
+react-app/src/components/FilterPanel.jsx
+react-app/src/components/JobCard.jsx
+react-app/src/components/Navbar.jsx
+react-app/src/components/ProfileCard.jsx
+react-app/src/components/ProtectedRoute.jsx
+react-app/src/components/SearchBar.jsx
+react-app/src/config/api.js
+react-app/src/context/AuthContext.jsx
+react-app/src/hooks/useAuth.js
+react-app/src/hooks/useFetch.js
+react-app/src/index.css
+react-app/src/main.jsx
+react-app/src/pages/AdminPanel.jsx
+react-app/src/pages/AlumniProfile.jsx
+react-app/src/pages/Dashboard.jsx
+react-app/src/pages/Directory.jsx
+react-app/src/pages/Login.jsx
+react-app/src/pages/MyApplications.jsx
+react-app/src/pages/MyListings.jsx
+react-app/src/pages/Networking.jsx
+react-app/src/pages/Notifications.jsx
+react-app/src/pages/Opportunities.jsx
+react-app/src/pages/PostJob.jsx
+react-app/src/pages/Register.jsx
+react-app/vite.config.js
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".gitignore">
+# =====================
+# Dependencies
+# =====================
+node_modules/
+
+# =====================
+# Environment Variables
+# =====================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# =====================
+# Build Outputs
+# =====================
+dist/
+build/
+.angular/
+out/
+
+# =====================
+# Logs
+# =====================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =====================
+# OS & Editor Files
+# =====================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# =====================
+# Testing
+# =====================
+coverage/
+.nyc_output/
+
+# =====================
+# Misc
+# =====================
+*.tgz
+*.cache
+package-lock.json
+</file>
+
+<file path="angular-app/.editorconfig">
+# Editor configuration, see https://editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.ts]
+quote_type = single
+
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
+</file>
+
+<file path="angular-app/.gitignore">
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# System files
+.DS_Store
+Thumbs.db
+</file>
+
+<file path="angular-app/angular.json">
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "angular-app": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/angular-app",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "angular-app:build:production"
+            },
+            "development": {
+              "buildTarget": "angular-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "angular-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  }
+}
+</file>
+
+<file path="angular-app/package.json">
+{
+  "name": "angular-app",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^17.3.0",
+    "@angular/common": "^17.3.0",
+    "@angular/compiler": "^17.3.0",
+    "@angular/core": "^17.3.0",
+    "@angular/forms": "^17.3.0",
+    "@angular/platform-browser": "^17.3.0",
+    "@angular/platform-browser-dynamic": "^17.3.0",
+    "@angular/router": "^17.3.0",
+    "rxjs": "~7.8.0",
+    "socket.io-client": "^4.8.3",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^17.3.0",
+    "@angular/cli": "^17.3.0",
+    "@angular/compiler-cli": "^17.3.0",
+    "@types/jasmine": "~5.1.0",
+    "jasmine-core": "~5.1.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "typescript": "~5.4.2"
+  }
+}
+</file>
+
+<file path="angular-app/README.md">
+# AngularApp
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+</file>
+
+<file path="angular-app/src/app/app.component.css">
+
+</file>
+
+<file path="angular-app/src/app/app.component.html">
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<style>
+  :host {
+    --bright-blue: oklch(51.01% 0.274 263.83);
+    --electric-violet: oklch(53.18% 0.28 296.97);
+    --french-violet: oklch(47.66% 0.246 305.88);
+    --vivid-pink: oklch(69.02% 0.277 332.77);
+    --hot-red: oklch(61.42% 0.238 15.34);
+    --orange-red: oklch(63.32% 0.24 31.68);
+
+    --gray-900: oklch(19.37% 0.006 300.98);
+    --gray-700: oklch(36.98% 0.014 302.71);
+    --gray-400: oklch(70.9% 0.015 304.04);
+
+    --red-to-pink-to-purple-vertical-gradient: linear-gradient(
+      180deg,
+      var(--orange-red) 0%,
+      var(--vivid-pink) 50%,
+      var(--electric-violet) 100%
+    );
+
+    --red-to-pink-to-purple-horizontal-gradient: linear-gradient(
+      90deg,
+      var(--orange-red) 0%,
+      var(--vivid-pink) 50%,
+      var(--electric-violet) 100%
+    );
+
+    --pill-accent: var(--bright-blue);
+
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1 {
+    font-size: 3.125rem;
+    color: var(--gray-900);
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: -0.125rem;
+    margin: 0;
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+  }
+
+  p {
+    margin: 0;
+    color: var(--gray-700);
+  }
+
+  main {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: inherit;
+    position: relative;
+  }
+
+  .angular-logo {
+    max-width: 9.2rem;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 3rem;
+  }
+
+  .content h1 {
+    margin-top: 1.75rem;
+  }
+
+  .content p {
+    margin-top: 1.5rem;
+  }
+
+  .divider {
+    width: 1px;
+    background: var(--red-to-pink-to-purple-vertical-gradient);
+    margin-inline: 0.5rem;
+  }
+
+  .pill-group {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+
+  .pill {
+    display: flex;
+    align-items: center;
+    --pill-accent: var(--bright-blue);
+    background: color-mix(in srgb, var(--pill-accent) 5%, transparent);
+    color: var(--pill-accent);
+    padding-inline: 0.75rem;
+    padding-block: 0.375rem;
+    border-radius: 2.75rem;
+    border: 0;
+    transition: background 0.3s ease;
+    font-family: var(--inter-font);
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.4rem;
+    letter-spacing: -0.00875rem;
+    text-decoration: none;
+  }
+
+  .pill:hover {
+    background: color-mix(in srgb, var(--pill-accent) 15%, transparent);
+  }
+
+  .pill-group .pill:nth-child(6n + 1) {
+    --pill-accent: var(--bright-blue);
+  }
+  .pill-group .pill:nth-child(6n + 2) {
+    --pill-accent: var(--french-violet);
+  }
+  .pill-group .pill:nth-child(6n + 3),
+  .pill-group .pill:nth-child(6n + 4),
+  .pill-group .pill:nth-child(6n + 5) {
+    --pill-accent: var(--hot-red);
+  }
+
+  .pill-group svg {
+    margin-inline-start: 0.25rem;
+  }
+
+  .social-links {
+    display: flex;
+    align-items: center;
+    gap: 0.73rem;
+    margin-top: 1.5rem;
+  }
+
+  .social-links path {
+    transition: fill 0.3s ease;
+    fill: var(--gray-400);
+  }
+
+  .social-links a:hover svg path {
+    fill: var(--gray-900);
+  }
+
+  @media screen and (max-width: 650px) {
+    .content {
+      flex-direction: column;
+      width: max-content;
+    }
+
+    .divider {
+      height: 1px;
+      width: 100%;
+      background: var(--red-to-pink-to-purple-horizontal-gradient);
+      margin-block: 1.5rem;
+    }
+  }
+</style>
+
+<main class="main">
+  <div class="content">
+    <div class="left-side">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 982 239"
+        fill="none"
+        class="angular-logo"
+      >
+        <g clip-path="url(#a)">
+          <path
+            fill="url(#b)"
+            d="M388.676 191.625h30.849L363.31 31.828h-35.758l-56.215 159.797h30.848l13.174-39.356h60.061l13.256 39.356Zm-65.461-62.675 21.602-64.311h1.227l21.602 64.311h-44.431Zm126.831-7.527v70.202h-28.23V71.839h27.002v20.374h1.392c2.782-6.71 7.2-12.028 13.255-15.956 6.056-3.927 13.584-5.89 22.503-5.89 8.264 0 15.465 1.8 21.684 5.318 6.137 3.518 10.964 8.673 14.319 15.382 3.437 6.71 5.074 14.81 4.992 24.383v76.175h-28.23v-71.92c0-8.019-2.046-14.237-6.219-18.819-4.173-4.5-9.819-6.791-17.102-6.791-4.91 0-9.328 1.063-13.174 3.272-3.846 2.128-6.792 5.237-9.001 9.328-2.046 4.009-3.191 8.918-3.191 14.728ZM589.233 239c-10.147 0-18.82-1.391-26.103-4.091-7.282-2.7-13.092-6.382-17.511-10.964-4.418-4.582-7.528-9.655-9.164-15.219l25.448-6.136c1.145 2.372 2.782 4.663 4.991 6.954 2.209 2.291 5.155 4.255 8.837 5.81 3.683 1.554 8.428 2.291 14.074 2.291 8.019 0 14.647-1.964 19.884-5.81 5.237-3.845 7.856-10.227 7.856-19.064v-22.665h-1.391c-1.473 2.946-3.601 5.892-6.383 9.001-2.782 3.109-6.464 5.645-10.965 7.691-4.582 2.046-10.228 3.109-17.101 3.109-9.165 0-17.511-2.209-25.039-6.545-7.446-4.337-13.42-10.883-17.757-19.474-4.418-8.673-6.628-19.473-6.628-32.565 0-13.091 2.21-24.301 6.628-33.383 4.419-9.082 10.311-15.955 17.839-20.7 7.528-4.746 15.874-7.037 25.039-7.037 7.037 0 12.846 1.145 17.347 3.518 4.582 2.373 8.182 5.236 10.883 8.51 2.7 3.272 4.746 6.382 6.137 9.327h1.554v-19.8h27.821v121.749c0 10.228-2.454 18.737-7.364 25.447-4.91 6.709-11.538 11.7-20.048 15.055-8.509 3.355-18.165 4.991-28.884 4.991Zm.245-71.266c5.974 0 11.047-1.473 15.302-4.337 4.173-2.945 7.446-7.118 9.573-12.519 2.21-5.482 3.274-12.027 3.274-19.637 0-7.609-1.064-14.155-3.274-19.8-2.127-5.646-5.318-10.064-9.491-13.255-4.174-3.11-9.329-4.746-15.384-4.746s-11.537 1.636-15.792 4.91c-4.173 3.272-7.365 7.772-9.492 13.418-2.128 5.727-3.191 12.191-3.191 19.392 0 7.2 1.063 13.745 3.273 19.228 2.127 5.482 5.318 9.736 9.573 12.764 4.174 3.027 9.41 4.582 15.629 4.582Zm141.56-26.51V71.839h28.23v119.786h-27.412v-21.273h-1.227c-2.7 6.709-7.119 12.191-13.338 16.446-6.137 4.255-13.747 6.382-22.748 6.382-7.855 0-14.81-1.718-20.783-5.237-5.974-3.518-10.72-8.591-14.075-15.382-3.355-6.709-5.073-14.891-5.073-24.464V71.839h28.312v71.921c0 7.609 2.046 13.664 6.219 18.083 4.173 4.5 9.655 6.709 16.365 6.709 4.173 0 8.183-.982 12.111-3.028 3.927-2.045 7.118-5.072 9.655-9.082 2.537-4.091 3.764-9.164 3.764-15.218Zm65.707-109.395v159.796h-28.23V31.828h28.23Zm44.841 162.169c-7.61 0-14.402-1.391-20.457-4.091-6.055-2.7-10.883-6.791-14.32-12.109-3.518-5.319-5.237-11.946-5.237-19.801 0-6.791 1.228-12.355 3.765-16.773 2.536-4.419 5.891-7.937 10.228-10.637 4.337-2.618 9.164-4.664 14.647-6.055 5.4-1.391 11.046-2.373 16.856-3.027 7.037-.737 12.683-1.391 17.102-1.964 4.337-.573 7.528-1.555 9.574-2.782 1.963-1.309 3.027-3.273 3.027-5.973v-.491c0-5.891-1.718-10.391-5.237-13.664-3.518-3.191-8.51-4.828-15.056-4.828-6.955 0-12.356 1.473-16.447 4.5-4.009 3.028-6.71 6.546-8.183 10.719l-26.348-3.764c2.046-7.282 5.483-13.336 10.31-18.328 4.746-4.909 10.638-8.59 17.511-11.045 6.955-2.455 14.565-3.682 22.912-3.682 5.809 0 11.537.654 17.265 2.045s10.965 3.6 15.711 6.71c4.746 3.109 8.51 7.282 11.455 12.6 2.864 5.318 4.337 11.946 4.337 19.883v80.184h-27.166v-16.446h-.9c-1.719 3.355-4.092 6.464-7.201 9.328-3.109 2.864-6.955 5.237-11.619 6.955-4.828 1.718-10.229 2.536-16.529 2.536Zm7.364-20.701c5.646 0 10.556-1.145 14.729-3.354 4.173-2.291 7.364-5.237 9.655-9.001 2.292-3.763 3.355-7.854 3.355-12.273v-14.155c-.9.737-2.373 1.391-4.5 2.046-2.128.654-4.419 1.145-7.037 1.636-2.619.491-5.155.9-7.692 1.227-2.537.328-4.746.655-6.628.901-4.173.572-8.019 1.472-11.292 2.781-3.355 1.31-5.973 3.11-7.855 5.401-1.964 2.291-2.864 5.318-2.864 8.918 0 5.237 1.882 9.164 5.728 11.782 3.682 2.782 8.51 4.091 14.401 4.091Zm64.643 18.328V71.839h27.412v19.965h1.227c2.21-6.955 5.974-12.274 11.292-16.038 5.319-3.763 11.456-5.645 18.329-5.645 1.555 0 3.355.082 5.237.163 1.964.164 3.601.328 4.91.573v25.938c-1.227-.41-3.109-.819-5.646-1.146a58.814 58.814 0 0 0-7.446-.49c-5.155 0-9.738 1.145-13.829 3.354-4.091 2.209-7.282 5.236-9.655 9.164-2.373 3.927-3.519 8.427-3.519 13.5v70.448h-28.312ZM222.077 39.192l-8.019 125.923L137.387 0l84.69 39.192Zm-53.105 162.825-57.933 33.056-57.934-33.056 11.783-28.556h92.301l11.783 28.556ZM111.039 62.675l30.357 73.803H80.681l30.358-73.803ZM7.937 165.115 0 39.192 84.69 0 7.937 165.115Z"
+          />
+          <path
+            fill="url(#c)"
+            d="M388.676 191.625h30.849L363.31 31.828h-35.758l-56.215 159.797h30.848l13.174-39.356h60.061l13.256 39.356Zm-65.461-62.675 21.602-64.311h1.227l21.602 64.311h-44.431Zm126.831-7.527v70.202h-28.23V71.839h27.002v20.374h1.392c2.782-6.71 7.2-12.028 13.255-15.956 6.056-3.927 13.584-5.89 22.503-5.89 8.264 0 15.465 1.8 21.684 5.318 6.137 3.518 10.964 8.673 14.319 15.382 3.437 6.71 5.074 14.81 4.992 24.383v76.175h-28.23v-71.92c0-8.019-2.046-14.237-6.219-18.819-4.173-4.5-9.819-6.791-17.102-6.791-4.91 0-9.328 1.063-13.174 3.272-3.846 2.128-6.792 5.237-9.001 9.328-2.046 4.009-3.191 8.918-3.191 14.728ZM589.233 239c-10.147 0-18.82-1.391-26.103-4.091-7.282-2.7-13.092-6.382-17.511-10.964-4.418-4.582-7.528-9.655-9.164-15.219l25.448-6.136c1.145 2.372 2.782 4.663 4.991 6.954 2.209 2.291 5.155 4.255 8.837 5.81 3.683 1.554 8.428 2.291 14.074 2.291 8.019 0 14.647-1.964 19.884-5.81 5.237-3.845 7.856-10.227 7.856-19.064v-22.665h-1.391c-1.473 2.946-3.601 5.892-6.383 9.001-2.782 3.109-6.464 5.645-10.965 7.691-4.582 2.046-10.228 3.109-17.101 3.109-9.165 0-17.511-2.209-25.039-6.545-7.446-4.337-13.42-10.883-17.757-19.474-4.418-8.673-6.628-19.473-6.628-32.565 0-13.091 2.21-24.301 6.628-33.383 4.419-9.082 10.311-15.955 17.839-20.7 7.528-4.746 15.874-7.037 25.039-7.037 7.037 0 12.846 1.145 17.347 3.518 4.582 2.373 8.182 5.236 10.883 8.51 2.7 3.272 4.746 6.382 6.137 9.327h1.554v-19.8h27.821v121.749c0 10.228-2.454 18.737-7.364 25.447-4.91 6.709-11.538 11.7-20.048 15.055-8.509 3.355-18.165 4.991-28.884 4.991Zm.245-71.266c5.974 0 11.047-1.473 15.302-4.337 4.173-2.945 7.446-7.118 9.573-12.519 2.21-5.482 3.274-12.027 3.274-19.637 0-7.609-1.064-14.155-3.274-19.8-2.127-5.646-5.318-10.064-9.491-13.255-4.174-3.11-9.329-4.746-15.384-4.746s-11.537 1.636-15.792 4.91c-4.173 3.272-7.365 7.772-9.492 13.418-2.128 5.727-3.191 12.191-3.191 19.392 0 7.2 1.063 13.745 3.273 19.228 2.127 5.482 5.318 9.736 9.573 12.764 4.174 3.027 9.41 4.582 15.629 4.582Zm141.56-26.51V71.839h28.23v119.786h-27.412v-21.273h-1.227c-2.7 6.709-7.119 12.191-13.338 16.446-6.137 4.255-13.747 6.382-22.748 6.382-7.855 0-14.81-1.718-20.783-5.237-5.974-3.518-10.72-8.591-14.075-15.382-3.355-6.709-5.073-14.891-5.073-24.464V71.839h28.312v71.921c0 7.609 2.046 13.664 6.219 18.083 4.173 4.5 9.655 6.709 16.365 6.709 4.173 0 8.183-.982 12.111-3.028 3.927-2.045 7.118-5.072 9.655-9.082 2.537-4.091 3.764-9.164 3.764-15.218Zm65.707-109.395v159.796h-28.23V31.828h28.23Zm44.841 162.169c-7.61 0-14.402-1.391-20.457-4.091-6.055-2.7-10.883-6.791-14.32-12.109-3.518-5.319-5.237-11.946-5.237-19.801 0-6.791 1.228-12.355 3.765-16.773 2.536-4.419 5.891-7.937 10.228-10.637 4.337-2.618 9.164-4.664 14.647-6.055 5.4-1.391 11.046-2.373 16.856-3.027 7.037-.737 12.683-1.391 17.102-1.964 4.337-.573 7.528-1.555 9.574-2.782 1.963-1.309 3.027-3.273 3.027-5.973v-.491c0-5.891-1.718-10.391-5.237-13.664-3.518-3.191-8.51-4.828-15.056-4.828-6.955 0-12.356 1.473-16.447 4.5-4.009 3.028-6.71 6.546-8.183 10.719l-26.348-3.764c2.046-7.282 5.483-13.336 10.31-18.328 4.746-4.909 10.638-8.59 17.511-11.045 6.955-2.455 14.565-3.682 22.912-3.682 5.809 0 11.537.654 17.265 2.045s10.965 3.6 15.711 6.71c4.746 3.109 8.51 7.282 11.455 12.6 2.864 5.318 4.337 11.946 4.337 19.883v80.184h-27.166v-16.446h-.9c-1.719 3.355-4.092 6.464-7.201 9.328-3.109 2.864-6.955 5.237-11.619 6.955-4.828 1.718-10.229 2.536-16.529 2.536Zm7.364-20.701c5.646 0 10.556-1.145 14.729-3.354 4.173-2.291 7.364-5.237 9.655-9.001 2.292-3.763 3.355-7.854 3.355-12.273v-14.155c-.9.737-2.373 1.391-4.5 2.046-2.128.654-4.419 1.145-7.037 1.636-2.619.491-5.155.9-7.692 1.227-2.537.328-4.746.655-6.628.901-4.173.572-8.019 1.472-11.292 2.781-3.355 1.31-5.973 3.11-7.855 5.401-1.964 2.291-2.864 5.318-2.864 8.918 0 5.237 1.882 9.164 5.728 11.782 3.682 2.782 8.51 4.091 14.401 4.091Zm64.643 18.328V71.839h27.412v19.965h1.227c2.21-6.955 5.974-12.274 11.292-16.038 5.319-3.763 11.456-5.645 18.329-5.645 1.555 0 3.355.082 5.237.163 1.964.164 3.601.328 4.91.573v25.938c-1.227-.41-3.109-.819-5.646-1.146a58.814 58.814 0 0 0-7.446-.49c-5.155 0-9.738 1.145-13.829 3.354-4.091 2.209-7.282 5.236-9.655 9.164-2.373 3.927-3.519 8.427-3.519 13.5v70.448h-28.312ZM222.077 39.192l-8.019 125.923L137.387 0l84.69 39.192Zm-53.105 162.825-57.933 33.056-57.934-33.056 11.783-28.556h92.301l11.783 28.556ZM111.039 62.675l30.357 73.803H80.681l30.358-73.803ZM7.937 165.115 0 39.192 84.69 0 7.937 165.115Z"
+          />
+        </g>
+        <defs>
+          <radialGradient
+            id="c"
+            cx="0"
+            cy="0"
+            r="1"
+            gradientTransform="rotate(118.122 171.182 60.81) scale(205.794)"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stop-color="#FF41F8" />
+            <stop offset=".707" stop-color="#FF41F8" stop-opacity=".5" />
+            <stop offset="1" stop-color="#FF41F8" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient
+            id="b"
+            x1="0"
+            x2="982"
+            y1="192"
+            y2="192"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stop-color="#F0060B" />
+            <stop offset="0" stop-color="#F0070C" />
+            <stop offset=".526" stop-color="#CC26D5" />
+            <stop offset="1" stop-color="#7702FF" />
+          </linearGradient>
+          <clipPath id="a"><path fill="#fff" d="M0 0h982v239H0z" /></clipPath>
+        </defs>
+      </svg>
+      <h1>Hello, {{ title }}</h1>
+      <p>Congratulations! Your app is running. 🎉</p>
+    </div>
+    <div class="divider" role="separator" aria-label="Divider"></div>
+    <div class="right-side">
+      <div class="pill-group">
+        @for (item of [
+          { title: 'Explore the Docs', link: 'https://angular.dev' },
+          { title: 'Learn with Tutorials', link: 'https://angular.dev/tutorials' },
+          { title: 'CLI Docs', link: 'https://angular.dev/tools/cli' },
+          { title: 'Angular Language Service', link: 'https://angular.dev/tools/language-service' },
+          { title: 'Angular DevTools', link: 'https://angular.dev/tools/devtools' },
+        ]; track item.title) {
+          <a
+            class="pill"
+            [href]="item.link"
+            target="_blank"
+            rel="noopener"
+          >
+            <span>{{ item.title }}</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="14"
+              viewBox="0 -960 960 960"
+              width="14"
+              fill="currentColor"
+            >
+              <path
+                d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"
+              />
+            </svg>
+          </a>
+        }
+      </div>
+      <div class="social-links">
+        <a
+          href="https://github.com/angular/angular"
+          aria-label="Github"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg
+            width="25"
+            height="24"
+            viewBox="0 0 25 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            alt="Github"
+          >
+            <path
+              d="M12.3047 0C5.50634 0 0 5.50942 0 12.3047C0 17.7423 3.52529 22.3535 8.41332 23.9787C9.02856 24.0946 9.25414 23.7142 9.25414 23.3871C9.25414 23.0949 9.24389 22.3207 9.23876 21.2953C5.81601 22.0377 5.09414 19.6444 5.09414 19.6444C4.53427 18.2243 3.72524 17.8449 3.72524 17.8449C2.61064 17.082 3.81137 17.0973 3.81137 17.0973C5.04697 17.1835 5.69604 18.3647 5.69604 18.3647C6.79321 20.2463 8.57636 19.7029 9.27978 19.3881C9.39052 18.5924 9.70736 18.0499 10.0591 17.7423C7.32641 17.4347 4.45429 16.3765 4.45429 11.6618C4.45429 10.3185 4.9311 9.22133 5.72065 8.36C5.58222 8.04931 5.16694 6.79833 5.82831 5.10337C5.82831 5.10337 6.85883 4.77319 9.2121 6.36459C10.1965 6.09082 11.2424 5.95546 12.2883 5.94931C13.3342 5.95546 14.3801 6.09082 15.3644 6.36459C17.7023 4.77319 18.7328 5.10337 18.7328 5.10337C19.3942 6.79833 18.9789 8.04931 18.8559 8.36C19.6403 9.22133 20.1171 10.3185 20.1171 11.6618C20.1171 16.3888 17.2409 17.4296 14.5031 17.7321C14.9338 18.1012 15.3337 18.8559 15.3337 20.0084C15.3337 21.6552 15.3183 22.978 15.3183 23.3779C15.3183 23.7009 15.5336 24.0854 16.1642 23.9623C21.0871 22.3484 24.6094 17.7341 24.6094 12.3047C24.6094 5.50942 19.0999 0 12.3047 0Z"
+            />
+          </svg>
+        </a>
+        <a
+          href="https://twitter.com/angular"
+          aria-label="Twitter"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            alt="Twitter"
+          >
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+            />
+          </svg>
+        </a>
+        <a
+          href="https://www.youtube.com/channel/UCbn1OgGei-DV7aSRo_HaAiw"
+          aria-label="Youtube"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg
+            width="29"
+            height="20"
+            viewBox="0 0 29 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            alt="Youtube"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M27.4896 1.52422C27.9301 1.96749 28.2463 2.51866 28.4068 3.12258C29.0004 5.35161 29.0004 10 29.0004 10C29.0004 10 29.0004 14.6484 28.4068 16.8774C28.2463 17.4813 27.9301 18.0325 27.4896 18.4758C27.0492 18.9191 26.5 19.2389 25.8972 19.4032C23.6778 20 14.8068 20 14.8068 20C14.8068 20 5.93586 20 3.71651 19.4032C3.11363 19.2389 2.56449 18.9191 2.12405 18.4758C1.68361 18.0325 1.36732 17.4813 1.20683 16.8774C0.613281 14.6484 0.613281 10 0.613281 10C0.613281 10 0.613281 5.35161 1.20683 3.12258C1.36732 2.51866 1.68361 1.96749 2.12405 1.52422C2.56449 1.08095 3.11363 0.76113 3.71651 0.596774C5.93586 0 14.8068 0 14.8068 0C14.8068 0 23.6778 0 25.8972 0.596774C26.5 0.76113 27.0492 1.08095 27.4896 1.52422ZM19.3229 10L11.9036 5.77905V14.221L19.3229 10Z"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+<router-outlet />
+</file>
+
+<file path="angular-app/src/app/app.component.spec.ts">
+import { TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AppComponent],
+    }).compileComponents();
+  });
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it(`should have the 'angular-app' title`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('angular-app');
+  });
+
+  it('should render title', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-app');
+  });
+});
+</file>
+
+<file path="angular-app/src/app/app.component.ts">
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, NavbarComponent],
+  template: `
+    <app-navbar></app-navbar>
+    <div class="container" style="padding: 20px;">
+      <router-outlet></router-outlet>
+    </div>
+  `
+})
+export class AppComponent {
+  title = 'angular-app';
+}
+</file>
+
+<file path="angular-app/src/app/app.config.ts">
+import { ApplicationConfig } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideRouter(routes),
+    provideHttpClient(withFetch())
+  ]
+};
+</file>
+
+<file path="angular-app/src/app/app.routes.ts">
+import { Routes } from '@angular/router';
+import { ChatComponent } from './chat/chat.component';
+import { ConnectionsComponent } from './connections/connections.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+
+export const routes: Routes = [
+  { path: '', redirectTo: '/connections', pathMatch: 'full' },
+  { path: 'connections', component: ConnectionsComponent },
+  { path: 'chat/:userId', component: ChatComponent },
+  { path: 'notifications', component: NotificationsComponent },
+];
+</file>
+
+<file path="angular-app/src/app/chat/chat.component.css">
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  margin: 0 auto;
+  max-width: 800px;
+}
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.input-area {
+  display: flex;
+  gap: 10px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border);
+}
+.input-area input {
+  margin-bottom: 0;
+}
+.my-message {
+  align-self: flex-end;
+  background-color: var(--primary);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 15px 15px 0 15px;
+  max-width: 70%;
+}
+.their-message {
+  align-self: flex-start;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 10px 15px;
+  border-radius: 15px 15px 15px 0;
+  max-width: 70%;
+}
+</file>
+
+<file path="angular-app/src/app/chat/chat.component.html">
+<div class="card chat-container">
+  <div class="messages">
+    <div *ngFor="let msg of messages$ | async"
+         [class]="msg.senderId === currentUserId ? 'my-message' : 'their-message'">
+      <span>{{ msg.text }}</span>
+      <small style="display: block; font-size: 10px; margin-top: 5px; opacity: 0.8;">
+        {{ msg.timestamp | date:'shortTime' }}
+      </small>
+    </div>
+    <div *ngIf="(messages$ | async)?.length === 0" style="text-align: center; color: var(--text-secondary); margin-top: 20px;">
+      No messages yet. Say hi!
+    </div>
+  </div>
+  <div class="input-area">
+    <input [(ngModel)]="messageText" placeholder="Type a message..." (keyup.enter)="sendMessage()"/>
+    <button class="btn-primary" (click)="sendMessage()">Send</button>
+  </div>
+</div>
+</file>
+
+<file path="angular-app/src/app/chat/chat.component.ts">
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ChatService, Message } from '../services/chat.service';
+import { AuthService } from '../services/auth.service';
+import { CommonModule, DatePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-chat',
+  standalone: true,
+  imports: [CommonModule, FormsModule, DatePipe],
+  templateUrl: './chat.component.html',
+  styleUrls: ['./chat.component.css']
+})
+export class ChatComponent implements OnInit {
+  userId!: string;
+  currentUserId: string | null = null;
+  messageText = '';
+  messages$ = this.chatService.messages$;
+
+  constructor(
+    private route: ActivatedRoute,
+    private chatService: ChatService,
+    private auth: AuthService
+  ) {
+    this.currentUserId = this.auth.getCurrentUserId();
+  }
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.userId = params['userId'];
+      this.chatService.loadHistory(this.userId).subscribe(res => {
+        this.chatService.setMessages(res.messages || []);
+      });
+    });
+  }
+
+  sendMessage() {
+    if (!this.messageText.trim()) return;
+    this.chatService.sendMessage(this.userId, this.messageText);
+    this.messageText = '';
+  }
+}
+</file>
+
+<file path="angular-app/src/app/connections/connections.component.html">
+<div>
+  <h2>Networking & Connections</h2>
+
+  <div class="card" *ngIf="pendingRequests.length > 0" style="margin-bottom: 20px;">
+    <h3>Pending Requests</h3>
+    <div *ngFor="let req of pendingRequests" style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid var(--border);">
+      <div>
+        <strong style="font-size: 16px;">{{ req.from.name }}</strong>
+        <p style="margin: 0; font-size: 14px; color: var(--text-secondary);">{{ req.from.designation }}</p>
+      </div>
+      <button class="btn-primary" (click)="acceptRequest(req.from._id)">Accept</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Recent Conversations</h3>
+    <div *ngIf="conversations.length === 0" style="color: var(--text-secondary)">No conversations yet.</div>
+    <div *ngFor="let conv of conversations" 
+         (click)="openChat(conv)"
+         style="cursor: pointer; padding: 15px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 15px;">
+      
+      <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 20px;">
+        {{ getOtherParticipant(conv.participants).name?.charAt(0) || '?' }}
+      </div>
+      <div style="flex: 1">
+        <h4 style="margin: 0 0 5px 0;">{{ getOtherParticipant(conv.participants).name }}</h4>
+        <p style="margin: 0; color: var(--text-secondary); font-size: 14px;">{{ getOtherParticipant(conv.participants).designation || 'Alumni' }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+</file>
+
+<file path="angular-app/src/app/connections/connections.component.ts">
+import { Component, OnInit } from '@angular/core';
+import { ChatService } from '../services/chat.service';
+import { AuthService } from '../services/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-connections',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './connections.component.html'
+})
+export class ConnectionsComponent implements OnInit {
+  conversations: any[] = [];
+  pendingRequests: any[] = [];
+  private apiUrl = 'http://localhost:5000/api';
+
+  constructor(
+    private chatService: ChatService,
+    private auth: AuthService,
+    private http: HttpClient,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    this.chatService.getConversations().subscribe(res => {
+      this.conversations = res;
+    });
+
+    this.http.get<any>(`${this.apiUrl}/users/me`, { headers: this.auth.getHeaders() }).subscribe(res => {
+      if (res && res.connectionRequests) {
+        this.pendingRequests = res.connectionRequests.filter((r: any) => r.status === 'pending');
+      }
+    });
+  }
+
+  getOtherParticipant(participants: any[]) {
+    const currentId = this.auth.getCurrentUserId();
+    return participants.find(p => p._id !== currentId) || {};
+  }
+
+  openChat(conversation: any) {
+    const other = this.getOtherParticipant(conversation.participants);
+    if (other._id) {
+      this.router.navigate(['/chat', other._id]);
+    }
+  }
+
+  acceptRequest(requesterId: string) {
+    this.http.put(`${this.apiUrl}/users/connect/${requesterId}/accept`, {}, { headers: this.auth.getHeaders() })
+      .subscribe(() => {
+        this.pendingRequests = this.pendingRequests.filter(r => r.from._id !== requesterId);
+        alert('Accepted request');
+      });
+  }
+}
+</file>
+
+<file path="angular-app/src/app/navbar/navbar.component.html">
+<nav style="background: var(--primary); color: white; display: flex; justify-content: space-between; padding: 0 20px; align-items: center; height: 60px;">
+  <h2 style="margin: 0;">Alumni Connect</h2>
+
+  <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+    <!-- Links that always go back to React app -->
+    <a [href]="reactBase + '/dashboard'" style="color: white; text-decoration: none;">Dashboard</a>
+    <a [href]="reactBase + '/directory'" style="color: white; text-decoration: none;">Directory</a>
+    <a [href]="reactBase + '/opportunities'" style="color: white; text-decoration: none;">Opportunities</a>
+
+    <!-- Angular internal links -->
+    <a routerLink="/connections" style="color: white; text-decoration: none;">Networking</a>
+    <a routerLink="/notifications" style="color: white; text-decoration: none;">
+      Notifications
+      <span *ngIf="unreadCount > 0"
+        style="background: red; border-radius: 50%; padding: 2px 6px; font-size: 12px; margin-left: 4px;">
+        {{ unreadCount }}
+      </span>
+    </a>
+
+    <!-- Alumni only -->
+    <ng-container *ngIf="userRole === 'alumni'">
+      <a [href]="reactBase + '/my-listings'" style="color: white; text-decoration: none;">My Listings</a>
+      <a [href]="reactBase + '/post-job'" style="color: white; text-decoration: none;">Post Job</a>
+    </ng-container>
+
+    <!-- Student only -->
+    <a *ngIf="userRole === 'student'"
+       [href]="reactBase + '/my-applications'"
+       style="color: white; text-decoration: none;">My Applications</a>
+
+    <!-- Admin only -->
+    <a *ngIf="userRole === 'admin'"
+       [href]="reactBase + '/admin'"
+       style="color: white; text-decoration: none;">Admin Panel</a>
+
+    <!-- Logout goes back to React login -->
+    <a [href]="reactBase + '/login'"
+       style="color: white; text-decoration: none; border: 1px solid white; padding: 4px 10px; border-radius: 4px;">
+      Logout
+    </a>
+  </div>
+</nav>
+</file>
+
+<file path="angular-app/src/app/navbar/navbar.component.ts">
+import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { NotificationService } from '../services/notification.service';
+import { AuthService } from '../services/auth.service';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-navbar',
+  standalone: true,
+  imports: [RouterLink, CommonModule],
+  templateUrl: './navbar.component.html'
+})
+export class NavbarComponent implements OnInit {
+  unreadCount = 0;
+  userRole: string | null = null;
+  reactBase = 'http://localhost:5173';
+
+  constructor(
+    private notificationService: NotificationService,
+    private auth: AuthService
+  ) {}
+
+  ngOnInit() {
+    this.notificationService.unreadCount$.subscribe(count => {
+      this.unreadCount = count;
+    });
+    this.notificationService.loadUnreadCount();
+
+    // Decode role from JWT so we can show/hide role-specific nav links
+    const token = this.auth.getToken();
+    if (token) {
+      try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        this.userRole = payload.role;
+      } catch { this.userRole = null; }
+    }
+  }
+}
+</file>
+
+<file path="angular-app/src/app/notifications/notifications.component.html">
+<div>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <h2>Notifications</h2>
+    <div *ngIf="(unreadCount$ | async) as count">
+      <button *ngIf="count > 0" class="btn-primary" (click)="markAllRead()">Mark All Read ({{ count }})</button>
+    </div>
+  </div>
+
+  <div *ngIf="notifications.length === 0" style="color: var(--text-secondary)">
+    No notifications.
+  </div>
+
+  <div *ngFor="let notif of notifications" 
+       [style.background]="notif.read ? 'var(--card-bg)' : '#E8F5E9'"
+       class="card"
+       style="display: flex; gap: 15px; align-items: start; padding: 15px; cursor: pointer; transition: 0.2s"
+       (click)="markAsRead(notif._id, notif.read)">
+    
+    <div style="font-size: 24px; padding-top: 2px;">
+      <span *ngIf="notif.type === 'new_message'">💬</span>
+      <span *ngIf="notif.type === 'connection_request' || notif.type === 'connection_accepted'">🤝</span>
+      <span *ngIf="notif.type === 'job_application' || notif.type === 'application_status'">💼</span>
+    </div>
+    
+    <div style="flex: 1">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+        <strong style="color: var(--text-primary)">{{ notif.fromUser?.name || 'System' }}</strong>
+        <small style="color: var(--text-secondary)">{{ notif.createdAt | date:'shortTime' }}</small>
+      </div>
+      <p style="margin: 0; color: var(--text-secondary)">{{ notif.message }}</p>
+    </div>
+    
+    <div *ngIf="!notif.read" style="width: 10px; height: 10px; border-radius: 50%; background: var(--success); margin-top: 8px;"></div>
+  </div>
+</div>
+</file>
+
+<file path="angular-app/src/app/notifications/notifications.component.ts">
+import { Component, OnInit } from '@angular/core';
+import { NotificationService } from '../services/notification.service';
+import { CommonModule, DatePipe } from '@angular/common';
+
+@Component({
+  selector: 'app-notifications',
+  standalone: true,
+  imports: [CommonModule, DatePipe],
+  templateUrl: './notifications.component.html'
+})
+export class NotificationsComponent implements OnInit {
+  notifications: any[] = [];
+  unreadCount$ = this.notificationService.unreadCount$;
+
+  constructor(private notificationService: NotificationService) {}
+
+  ngOnInit() {
+    this.fetchNotifications();
+    this.notificationService.loadUnreadCount();
+  }
+
+  fetchNotifications() {
+    this.notificationService.getNotifications().subscribe(res => {
+      this.notifications = res;
+    });
+  }
+
+  markAllRead() {
+    this.notificationService.markAllRead().subscribe(() => {
+      this.fetchNotifications();
+      this.notificationService.loadUnreadCount();
+    });
+  }
+
+  markAsRead(id: string, currentlyRead: boolean) {
+    if (currentlyRead) return;
+    this.notificationService.markRead(id).subscribe(() => {
+      this.fetchNotifications();
+      this.notificationService.loadUnreadCount();
+    });
+  }
+}
+</file>
+
+<file path="angular-app/src/app/services/auth.service.ts">
+import { Injectable } from '@angular/core';
+
+@Injectable({ providedIn: 'root' })
+export class AuthService {
+  private apiUrl = 'http://localhost:5000/api';
+
+  constructor() {
+    // Read optional token from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlToken = urlParams.get('token');
+    const urlUserId = urlParams.get('userId');
+
+    if (urlToken && urlUserId) {
+      localStorage.setItem('token', urlToken);
+      localStorage.setItem('userId', urlUserId);
+    }
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  getHeaders() {
+    return { Authorization: `Bearer ${this.getToken()}` };
+  }
+
+  getCurrentUserId(): string | null {
+    const token = this.getToken();
+    if (!token) return localStorage.getItem('userId');
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.id;
+    } catch { return localStorage.getItem('userId'); }
+  }
+}
+</file>
+
+<file path="angular-app/src/app/services/chat.service.ts">
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from './auth.service';
+import { BehaviorSubject, Observable, fromEvent } from 'rxjs';
+import { io, Socket } from 'socket.io-client';
+
+export interface Message {
+  senderId: string;
+  text: string;
+  timestamp: Date | string;
+}
+
+@Injectable({ providedIn: 'root' })
+export class ChatService {
+  private socket: Socket;
+  private messageSubject = new BehaviorSubject<Message[]>([]);
+  messages$ = this.messageSubject.asObservable();
+  private apiUrl = 'http://localhost:5000/api';
+
+  constructor(private auth: AuthService, private http: HttpClient) {
+    this.socket = io('http://localhost:5000');
+    const userId = this.auth.getCurrentUserId();
+    if (userId) this.socket.emit('join', userId);
+
+    fromEvent<Message>(this.socket, 'receive-message').subscribe(msg => {
+      const current = this.messageSubject.getValue();
+      this.messageSubject.next([...current, msg]);
+    });
+  }
+
+  loadHistory(otherUserId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/messages/${otherUserId}`,
+      { headers: this.auth.getHeaders() });
+  }
+
+  getConversations(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/messages/conversations/list`,
+      { headers: this.auth.getHeaders() });
+  }
+
+  sendMessage(toUserId: string, text: string): void {
+    const senderId = this.auth.getCurrentUserId();
+    if (!senderId) return;
+    
+    this.socket.emit('send-message', { to: toUserId, text, senderId });
+    
+    this.http.post(`${this.apiUrl}/messages/${toUserId}`, { text },
+      { headers: this.auth.getHeaders() }).subscribe();
+      
+    const current = this.messageSubject.getValue();
+    this.messageSubject.next([...current, { text, senderId, timestamp: new Date() }]);
+  }
+
+  setMessages(messages: Message[]): void {
+    this.messageSubject.next(messages);
+  }
+}
+</file>
+
+<file path="angular-app/src/app/services/notification.service.ts">
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from './auth.service';
+import { BehaviorSubject, Observable } from 'rxjs';
+
+@Injectable({ providedIn: 'root' })
+export class NotificationService {
+  private apiUrl = 'http://localhost:5000/api';
+  private unreadCount = new BehaviorSubject<number>(0);
+  unreadCount$ = this.unreadCount.asObservable();
+
+  constructor(private http: HttpClient, private auth: AuthService) {}
+
+  loadUnreadCount(): void {
+    this.http.get<{count: number}>(`${this.apiUrl}/notify/unread-count`,
+      { headers: this.auth.getHeaders() })
+      .subscribe(res => this.unreadCount.next(res.count));
+  }
+
+  getNotifications(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/notify`, { headers: this.auth.getHeaders() });
+  }
+
+  markAllRead(): Observable<any> {
+    return this.http.put(`${this.apiUrl}/notify/read-all`, {},
+      { headers: this.auth.getHeaders() });
+  }
+
+  markRead(id: string): Observable<any> {
+    return this.http.put(`${this.apiUrl}/notify/${id}/read`, {},
+      { headers: this.auth.getHeaders() });
+  }
+}
+</file>
+
+<file path="angular-app/src/assets/.gitkeep">
+
+</file>
+
+<file path="angular-app/src/index.html">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularApp</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
+</file>
+
+<file path="angular-app/src/main.ts">
+import { bootstrapApplication } from '@angular/platform-browser';
+import { appConfig } from './app/app.config';
+import { AppComponent } from './app/app.component';
+
+bootstrapApplication(AppComponent, appConfig)
+  .catch((err) => console.error(err));
+</file>
+
+<file path="angular-app/src/styles.css">
+:root {
+  --primary: #1E3A5F;
+  --primary-light: #2E5F8A;
+  --accent: #4A90D9;
+  --bg: #F4F7FB;
+  --card-bg: #FFFFFF;
+  --text-primary: #1A1A2E;
+  --text-secondary: #666;
+  --border: #E0E7EF;
+  --success: #27AE60;
+  --warning: #F39C12;
+  --danger: #E74C3C;
+  --info: #3498DB;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text-primary);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin-bottom: 16px;
+}
+
+button {
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:active {
+  background-color: var(--primary-light);
+}
+
+.btn-secondary {
+  background-color: white;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+input, select, textarea {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+</file>
+
+<file path="angular-app/tsconfig.app.json">
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": []
+  },
+  "files": [
+    "src/main.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ]
+}
+</file>
+
+<file path="angular-app/tsconfig.json">
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
+    "lib": [
+      "ES2022",
+      "dom"
+    ]
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}
+</file>
+
+<file path="angular-app/tsconfig.spec.json">
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/spec",
+    "types": [
+      "jasmine"
+    ]
+  },
+  "include": [
+    "src/**/*.spec.ts",
+    "src/**/*.d.ts"
+  ]
+}
+</file>
+
+<file path="backend/gateway/index.js">
+const express = require('express');
+const router = express.Router();
+
+const userRoutes = require('../services/users/user.routes');
+const jobRoutes = require('../services/jobs/job.routes');
+const messageRoutes = require('../services/messages/message.routes');
+const notifyRoutes = require('../services/notify/notify.routes');
+
+router.use('/users', userRoutes);
+router.use('/jobs', jobRoutes);
+router.use('/messages', messageRoutes);
+router.use('/notify', notifyRoutes);
+
+module.exports = router;
+</file>
+
+<file path="backend/middleware/authMiddleware.js">
+const jwt = require('jsonwebtoken');
+
+module.exports = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ message: 'Authentication required' });
+  }
+
+  const token = authHeader.split(' ')[1];
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (err) {
+    return res.status(401).json({ message: 'Invalid or expired token' });
+  }
+};
+</file>
+
+<file path="backend/middleware/logger.js">
+module.exports = (req, res, next) => {
+  const userId = req.user ? req.user.id : 'unauthenticated';
+  const timestamp = new Date().toISOString();
+  console.log(`[${req.method}] ${req.originalUrl} - ${userId} - ${timestamp}`);
+  next();
+};
+</file>
+
+<file path="backend/middleware/rateLimiter.js">
+const rateLimit = require('express-rate-limit');
+
+const limiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 100, // limit each IP to 100 requests per windowMs
+  message: { message: 'Too many requests' }
+});
+
+module.exports = limiter;
+</file>
+
+<file path="backend/middleware/roleCheck.js">
+module.exports = (...allowedRoles) => {
+  return (req, res, next) => {
+    if (!req.user || !allowedRoles.includes(req.user.role)) {
+      return res.status(403).json({ message: 'Access denied: insufficient permissions' });
+    }
+    next();
+  };
+};
+</file>
+
+<file path="backend/middleware/validator.js">
+exports.validate = (schema) => {
+  return (req, res, next) => {
+    const { error } = schema.validate(req.body);
+    if (error) {
+      return res.status(400).json({ message: error.details[0].message });
+    }
+    next();
+  };
+};
+</file>
+
+<file path="backend/models/Conversation.js">
+const mongoose = require('mongoose');
+
+const ConversationSchema = new mongoose.Schema({
+  participants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  messages: [{
+    senderId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    text: String,
+    timestamp: { type: Date, default: Date.now }
+  }],
+  lastUpdated: { type: Date, default: Date.now, index: true }
+});
+
+module.exports = mongoose.model('Conversation', ConversationSchema);
+</file>
+
+<file path="backend/models/Job.js">
+const mongoose = require('mongoose');
+
+const JobSchema = new mongoose.Schema({
+  postedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  title: { type: String, required: true },
+  company: { type: String, required: true },
+  type: { type: String, enum: ['job', 'internship', 'mentorship'], required: true },
+  description: { type: String, required: true },
+  requiredSkills: { type: [String], index: true },
+  deadline: Date,
+  applicants: [{
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    status: { type: String, enum: ['applied', 'under_review', 'accepted', 'rejected'], default: 'applied' },
+    appliedAt: { type: Date, default: Date.now }
+  }],
+  isActive: { type: Boolean, default: true },
+  createdAt: { type: Date, default: Date.now }
+});
+
+module.exports = mongoose.model('Job', JobSchema);
+</file>
+
+<file path="backend/models/Notification.js">
+const mongoose = require('mongoose');
+
+const NotificationSchema = new mongoose.Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true, index: true },
+  type: { type: String, enum: ['connection_request', 'connection_accepted', 'new_message', 'job_application', 'application_status'], required: true },
+  fromUser: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  message: String,
+  read: { type: Boolean, default: false, index: true },
+  createdAt: { type: Date, default: Date.now }
+});
+
+module.exports = mongoose.model('Notification', NotificationSchema);
+</file>
+
+<file path="backend/models/User.js">
+const mongoose = require('mongoose');
+
+const UserSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true, index: true },
+  password: { type: String, required: true },
+  role: { type: String, enum: ['student', 'alumni', 'admin'], default: 'student' },
+  batch: { type: Number, index: true },
+  department: String,
+  company: String,
+  designation: String,
+  bio: String,
+  skills: { type: [String], index: true },
+  connections: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  connectionRequests: [{
+    from: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    status: { type: String, enum: ['pending', 'accepted', 'declined'], default: 'pending' }
+  }],
+  createdAt: { type: Date, default: Date.now }
+});
+
+UserSchema.index({ name: 'text', company: 'text' });
+
+module.exports = mongoose.model('User', UserSchema);
+</file>
+
+<file path="backend/package.json">
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^8.0.0",
+    "socket.io": "^4.6.1",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3",
+    "joi": "^17.11.0",
+    "express-rate-limit": "^7.1.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  }
+}
+</file>
+
+<file path="backend/services/jobs/job.controller.js">
+const Job = require('../../models/Job');
+const Notification = require('../../models/Notification');
+const mongoose = require('mongoose');
+
+const isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id);
+
+const VALID_STATUSES = ['applied', 'under_review', 'accepted', 'rejected'];
+
+exports.createJob = async (req, res) => {
+  try {
+    const job = new Job({ ...req.body, postedBy: req.user.id });
+    await job.save();
+    res.status(201).json(job);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.getJobs = async (req, res) => {
+  try {
+    const { type, skills, page = 1, limit = 10 } = req.query;
+    let query = { isActive: true };
+
+    if (type) query.type = type;
+    // FIX: trim whitespace when splitting skills e.g. "React, Node" → ["React", "Node"]
+    if (skills) query.requiredSkills = { $in: skills.split(',').map(s => s.trim()) };
+
+    // FIX: parseInt so arithmetic isn't done on strings
+    const pageNum = Math.max(1, parseInt(page, 10) || 1);
+    const limitNum = Math.min(100, Math.max(1, parseInt(limit, 10) || 10));
+
+    const jobs = await Job.find(query)
+      .populate('postedBy', 'name designation company')
+      .sort({ createdAt: -1 })
+      .skip((pageNum - 1) * limitNum)
+      .limit(limitNum);
+
+    res.json(jobs);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.getJobById = async (req, res) => {
+  try {
+    // FIX: invalid ObjectId crashes with CastError — return 404 instead
+    if (!isValidObjectId(req.params.id)) {
+      return res.status(404).json({ message: 'Job not found' });
+    }
+    const job = await Job.findById(req.params.id)
+      .populate('postedBy', 'name designation company')
+      .populate('applicants.userId', 'name email');
+    if (!job) return res.status(404).json({ message: 'Job not found' });
+    res.json(job);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.applyForJob = async (req, res) => {
+  try {
+    // FIX: validate ObjectId format
+    if (!isValidObjectId(req.params.id)) {
+      return res.status(404).json({ message: 'Job not found' });
+    }
+
+    const job = await Job.findById(req.params.id);
+    if (!job) return res.status(404).json({ message: 'Job not found' });
+
+    // FIX: prevent the job poster (alumni) from applying to their own posting
+    if (job.postedBy.toString() === req.user.id) {
+      return res.status(400).json({ message: 'You cannot apply to your own job posting' });
+    }
+
+    // FIX: only allow applying to active jobs
+    if (!job.isActive) {
+      return res.status(400).json({ message: 'This job posting is no longer active' });
+    }
+
+    const alreadyApplied = job.applicants.some(a => a.userId.toString() === req.user.id);
+    if (alreadyApplied) return res.status(400).json({ message: 'Already applied' });
+
+    job.applicants.push({ userId: req.user.id, status: 'applied' });
+    await job.save();
+
+    await Notification.create({
+      userId: job.postedBy,
+      type: 'job_application',
+      fromUser: req.user.id,
+      message: `Someone applied for your posting: ${job.title}`
+    });
+
+    res.json({ message: 'Successfully applied' });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.updateApplicantStatus = async (req, res) => {
+  try {
+    const { status } = req.body;
+    const { id, userId } = req.params;
+
+    // FIX: validate that status is a permitted enum value
+    if (!status || !VALID_STATUSES.includes(status)) {
+      return res.status(400).json({ message: `Status must be one of: ${VALID_STATUSES.join(', ')}` });
+    }
+
+    // FIX: validate ObjectId formats
+    if (!isValidObjectId(id) || !isValidObjectId(userId)) {
+      return res.status(404).json({ message: 'Job or applicant not found' });
+    }
+
+    const job = await Job.findById(id);
+    if (!job) return res.status(404).json({ message: 'Job not found' });
+    if (job.postedBy.toString() !== req.user.id) return res.status(403).json({ message: 'Not authorized' });
+
+    const applicant = job.applicants.find(a => a.userId.toString() === userId);
+    if (!applicant) return res.status(404).json({ message: 'Applicant not found' });
+
+    applicant.status = status;
+    await job.save();
+
+    await Notification.create({
+      userId,
+      type: 'application_status',
+      fromUser: req.user.id,
+      message: `Your application status for ${job.title} was updated to ${status}`
+    });
+
+    res.json({ message: 'Status updated' });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.getMyListings = async (req, res) => {
+  try {
+    const jobs = await Job.find({ postedBy: req.user.id })
+      .populate('applicants.userId', 'name email')
+      .sort({ createdAt: -1 });
+    res.json(jobs);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.getMyApplications = async (req, res) => {
+  try {
+    const jobs = await Job.find({ 'applicants.userId': req.user.id })
+      .populate('postedBy', 'name company');
+
+    const applications = jobs.map(job => {
+      const applicant = job.applicants.find(a => a.userId.toString() === req.user.id);
+      return {
+        job: { _id: job._id, title: job.title, company: job.company, type: job.type },
+        appliedAt: applicant.appliedAt,
+        status: applicant.status
+      };
+    });
+
+    res.json(applications);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.deleteJob = async (req, res) => {
+  try {
+    // FIX: validate ObjectId format
+    if (!isValidObjectId(req.params.id)) {
+      return res.status(404).json({ message: 'Job not found' });
+    }
+
+    const job = await Job.findById(req.params.id);
+    if (!job) return res.status(404).json({ message: 'Job not found' });
+
+    if (job.postedBy.toString() !== req.user.id && req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Not authorized' });
+    }
+
+    job.isActive = false;
+    await job.save();
+    res.json({ message: 'Job deleted' });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+</file>
+
+<file path="backend/services/jobs/job.routes.js">
+const express = require('express');
+const router = express.Router();
+const Joi = require('joi');
+const { validate } = require('../../middleware/validator');
+const authMiddleware = require('../../middleware/authMiddleware');
+const roleCheck = require('../../middleware/roleCheck');
+const jobController = require('./job.controller');
+
+const createJobSchema = Joi.object({
+  title: Joi.string().required(),
+  company: Joi.string().required(),
+  type: Joi.string().valid('job', 'internship', 'mentorship').required(),
+  description: Joi.string().required(),
+  requiredSkills: Joi.array().items(Joi.string()),
+  deadline: Joi.date()
+});
+
+router.use(authMiddleware);
+
+router.post('/', roleCheck('alumni'), validate(createJobSchema), jobController.createJob);
+router.get('/', jobController.getJobs);
+router.get('/my/listings', roleCheck('alumni'), jobController.getMyListings);
+router.get('/my/applications', roleCheck('student'), jobController.getMyApplications);
+router.get('/:id', jobController.getJobById);
+router.post('/:id/apply', roleCheck('student'), jobController.applyForJob);
+router.put('/:id/applicant/:userId/status', roleCheck('alumni'), jobController.updateApplicantStatus);
+router.delete('/:id', jobController.deleteJob);
+
+module.exports = router;
+</file>
+
+<file path="backend/services/messages/message.controller.js">
+const Conversation = require('../../models/Conversation');
+const Notification = require('../../models/Notification');
+const mongoose = require('mongoose');
+
+const isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id);
+
+exports.getConversation = async (req, res) => {
+  try {
+    const { otherUserId } = req.params;
+
+    // FIX: invalid ObjectId would crash with CastError
+    if (!isValidObjectId(otherUserId)) {
+      return res.status(400).json({ message: 'Invalid user ID' });
+    }
+
+    // FIX: GET should only fetch, never create. Removed auto-creation on GET.
+    // Creating a conversation is the job of sendMessage (POST).
+    const conversation = await Conversation.findOne({
+      participants: { $all: [req.user.id, otherUserId] }
+    });
+
+    if (!conversation) {
+      return res.json({ participants: [req.user.id, otherUserId], messages: [] });
+    }
+
+    res.json(conversation);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.sendMessage = async (req, res) => {
+  try {
+    const { otherUserId } = req.params;
+    const { text } = req.body;
+
+    // FIX: validate ObjectId format
+    if (!isValidObjectId(otherUserId)) {
+      return res.status(400).json({ message: 'Invalid user ID' });
+    }
+
+    // FIX: reject empty or missing text
+    if (!text || !text.trim()) {
+      return res.status(400).json({ message: 'Message text is required' });
+    }
+
+    // FIX: prevent messaging yourself
+    if (otherUserId === req.user.id) {
+      return res.status(400).json({ message: 'Cannot send a message to yourself' });
+    }
+
+    let conversation = await Conversation.findOne({
+      participants: { $all: [req.user.id, otherUserId] }
+    });
+
+    if (!conversation) {
+      conversation = new Conversation({
+        participants: [req.user.id, otherUserId],
+        messages: []
+      });
+    }
+
+    conversation.messages.push({
+      senderId: req.user.id,
+      text: text.trim(),
+      timestamp: Date.now()
+    });
+    conversation.lastUpdated = Date.now();
+    await conversation.save();
+
+    await Notification.create({
+      userId: otherUserId,
+      type: 'new_message',
+      fromUser: req.user.id,
+      message: 'Sent you a new message'
+    });
+
+    res.status(201).json(conversation);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.getConversationsList = async (req, res) => {
+  try {
+    const conversations = await Conversation.find({ participants: req.user.id })
+      // FIX: also populate 'role' so the frontend can show the correct label (Student/Alumni)
+      .populate('participants', 'name designation role')
+      .sort({ lastUpdated: -1 });
+    res.json(conversations);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+</file>
+
+<file path="backend/services/messages/message.routes.js">
+const express = require('express');
+const router = express.Router();
+const authMiddleware = require('../../middleware/authMiddleware');
+const messageController = require('./message.controller');
+
+router.use(authMiddleware);
+
+router.get('/conversations/list', messageController.getConversationsList);
+router.get('/:otherUserId', messageController.getConversation);
+router.post('/:otherUserId', messageController.sendMessage);
+
+module.exports = router;
+</file>
+
+<file path="backend/services/notify/notify.controller.js">
+const Notification = require('../../models/Notification');
+const mongoose = require('mongoose');
+
+const isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id);
+
+exports.getNotifications = async (req, res) => {
+  try {
+    const notifications = await Notification.find({ userId: req.user.id })
+      .populate('fromUser', 'name')
+      .sort({ createdAt: -1 });
+    res.json(notifications);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.getUnreadCount = async (req, res) => {
+  try {
+    const count = await Notification.countDocuments({ userId: req.user.id, read: false });
+    res.json({ count });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.markAllRead = async (req, res) => {
+  try {
+    await Notification.updateMany({ userId: req.user.id, read: false }, { read: true });
+    res.json({ message: 'All notifications marked as read' });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.markRead = async (req, res) => {
+  try {
+    // FIX: invalid ObjectId format causes CastError 500 — return 404 instead
+    if (!isValidObjectId(req.params.id)) {
+      return res.status(404).json({ message: 'Notification not found' });
+    }
+
+    const notification = await Notification.findOneAndUpdate(
+      { _id: req.params.id, userId: req.user.id },
+      { read: true },
+      { new: true }
+    );
+    if (!notification) return res.status(404).json({ message: 'Notification not found' });
+    res.json(notification);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+</file>
+
+<file path="backend/services/notify/notify.routes.js">
+const express = require('express');
+const router = express.Router();
+const authMiddleware = require('../../middleware/authMiddleware');
+const notifyController = require('./notify.controller');
+
+router.use(authMiddleware);
+
+router.get('/', notifyController.getNotifications);
+router.get('/unread-count', notifyController.getUnreadCount);
+router.put('/read-all', notifyController.markAllRead);
+router.put('/:id/read', notifyController.markRead);
+
+module.exports = router;
+</file>
+
+<file path="backend/services/users/user.controller.js">
+const User = require('../../models/User');
+const Notification = require('../../models/Notification');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
+
+// Helper: check if a string is a valid MongoDB ObjectId
+const isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id);
+
+exports.register = async (req, res) => {
+  try {
+    const { name, email, password, role, batch, department } = req.body;
+    let user = await User.findOne({ email });
+    if (user) return res.status(400).json({ message: 'User already exists' });
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    user = new User({ name, email, password: hashedPassword, role, batch, department });
+    await user.save();
+
+    const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '7d' });
+    const userRes = user.toObject();
+    delete userRes.password;
+
+    res.status(201).json({ token, user: userRes });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error', error: err.message });
+  }
+};
+
+exports.login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) return res.status(400).json({ message: 'Invalid credentials' });
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
+
+    const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '7d' });
+    const userRes = user.toObject();
+    delete userRes.password;
+
+    res.json({ token, user: userRes });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.getDirectory = async (req, res) => {
+  try {
+    const { search, batch, department, skills, page = 1, limit = 10 } = req.query;
+    let query = { role: 'alumni' };
+
+    if (search) query.$text = { $search: search };
+    if (batch) query.batch = Number(batch);
+    if (department) query.department = department;
+    if (skills) query.skills = { $in: skills.split(',').map(s => s.trim()) };
+
+    const pageNum = Math.max(1, parseInt(page, 10) || 1);
+    const limitNum = Math.min(100, Math.max(1, parseInt(limit, 10) || 10));
+    const skip = (pageNum - 1) * limitNum;
+
+    const users = await User.find(query)
+      .select('-password')
+      .sort({ name: 1 })
+      .skip(skip)
+      .limit(limitNum);
+
+    res.json({ users });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.getProfile = async (req, res) => {
+  try {
+    // FIX: invalid ObjectId format would crash with CastError — return 404 instead
+    if (!isValidObjectId(req.params.id)) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    const user = await User.findById(req.params.id)
+      .select('-password')
+      .populate('connections', 'name designation company');
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.updateProfile = async (req, res) => {
+  try {
+    // FIX: whitelist allowed fields — prevent role/email/password escalation via body
+    const { name, company, designation, bio, skills, batch, department } = req.body;
+    const allowed = { name, company, designation, bio, skills, batch, department };
+
+    // Remove undefined keys so they don't overwrite existing values with undefined
+    Object.keys(allowed).forEach(key => allowed[key] === undefined && delete allowed[key]);
+
+    const user = await User.findByIdAndUpdate(req.user.id, allowed, { new: true }).select('-password');
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.sendConnectionRequest = async (req, res) => {
+  try {
+    const targetId = req.params.targetId;
+
+    // FIX: validate ObjectId format
+    if (!isValidObjectId(targetId)) {
+      return res.status(400).json({ message: 'Invalid user ID' });
+    }
+
+    if (targetId === req.user.id) return res.status(400).json({ message: 'Cannot connect with yourself' });
+
+    const targetUser = await User.findById(targetId);
+    if (!targetUser) return res.status(404).json({ message: 'User not found' });
+
+    const alreadyConnected = targetUser.connections.some(c => c.toString() === req.user.id);
+    if (alreadyConnected) return res.status(400).json({ message: 'Already connected' });
+
+    const requestExists = targetUser.connectionRequests.some(cr => cr.from.toString() === req.user.id && cr.status === 'pending');
+    if (requestExists) return res.status(400).json({ message: 'Request already pending' });
+
+    targetUser.connectionRequests.push({ from: req.user.id, status: 'pending' });
+    await targetUser.save();
+
+    await Notification.create({
+      userId: targetId,
+      type: 'connection_request',
+      fromUser: req.user.id,
+      message: 'Sent you a connection request'
+    });
+
+    res.json({ message: 'Connection request sent' });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.acceptConnection = async (req, res) => {
+  try {
+    const { requesterId } = req.params;
+
+    // FIX: validate ObjectId format
+    if (!isValidObjectId(requesterId)) {
+      return res.status(400).json({ message: 'Invalid user ID' });
+    }
+
+    const user = await User.findById(req.user.id);
+    const requester = await User.findById(requesterId);
+    if (!requester) return res.status(404).json({ message: 'Requester not found' });
+
+    const request = user.connectionRequests.find(r => r.from.toString() === requesterId && r.status === 'pending');
+    if (!request) return res.status(404).json({ message: 'Pending request not found' });
+
+    request.status = 'accepted';
+    user.connections.push(requesterId);
+    if (!requester.connections.some(c => c.toString() === user._id.toString())) {
+      requester.connections.push(user._id);
+      await requester.save();
+    }
+    await user.save();
+
+    await Notification.create({
+      userId: requesterId,
+      type: 'connection_accepted',
+      fromUser: user._id,
+      message: 'Accepted your connection request'
+    });
+
+    res.json({ message: 'Connection accepted' });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.declineConnection = async (req, res) => {
+  try {
+    const { requesterId } = req.params;
+
+    // FIX: validate ObjectId format
+    if (!isValidObjectId(requesterId)) {
+      return res.status(400).json({ message: 'Invalid user ID' });
+    }
+
+    const user = await User.findById(req.user.id);
+
+    const request = user.connectionRequests.find(r => r.from.toString() === requesterId && r.status === 'pending');
+    if (!request) return res.status(404).json({ message: 'Pending request not found' });
+
+    request.status = 'declined';
+    await user.save();
+
+    res.json({ message: 'Connection declined' });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.getMe = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id)
+      .select('-password')
+      .populate({ path: 'connectionRequests.from', select: 'name designation' });
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.getAllUsersAdmin = async (req, res) => {
+  try {
+    const pageNum = Math.max(1, parseInt(req.query.page, 10) || 1);
+    const limitNum = Math.min(100, Math.max(1, parseInt(req.query.limit, 10) || 50));
+    const users = await User.find()
+      .select('name email role batch createdAt')
+      .skip((pageNum - 1) * limitNum)
+      .limit(limitNum);
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.updateUserRoleAdmin = async (req, res) => {
+  try {
+    const { role } = req.body;
+
+    // FIX: validate that provided role is an allowed enum value
+    const validRoles = ['student', 'alumni', 'admin'];
+    if (!role || !validRoles.includes(role)) {
+      return res.status(400).json({ message: `Role must be one of: ${validRoles.join(', ')}` });
+    }
+
+    // FIX: validate ObjectId format before DB hit
+    if (!isValidObjectId(req.params.id)) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const user = await User.findByIdAndUpdate(req.params.id, { role }, { new: true }).select('name email role');
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.deleteUserAdmin = async (req, res) => {
+  try {
+    // FIX: validate ObjectId format
+    if (!isValidObjectId(req.params.id)) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const user = await User.findByIdAndDelete(req.params.id);
+    // FIX: check if user actually existed before returning success
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    res.json({ message: 'User deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+</file>
+
+<file path="backend/services/users/user.routes.js">
+const express = require('express');
+const router = express.Router();
+const Joi = require('joi');
+const { validate } = require('../../middleware/validator');
+const authMiddleware = require('../../middleware/authMiddleware');
+const roleCheck = require('../../middleware/roleCheck');
+const rateLimiter = require('../../middleware/rateLimiter');
+const logger = require('../../middleware/logger');
+const userController = require('./user.controller');
+
+const registerSchema = Joi.object({
+  name: Joi.string().required(),
+  email: Joi.string().email().required(),
+  password: Joi.string().min(6).required(),
+  role: Joi.string().valid('student', 'alumni').required(),
+  batch: Joi.number().required(),
+  department: Joi.string().required()
+});
+
+const loginSchema = Joi.object({
+  email: Joi.string().email().required(),
+  password: Joi.string().required()
+});
+
+const updateProfileSchema = Joi.object({
+  name: Joi.string(),
+  company: Joi.string().allow(''),
+  designation: Joi.string().allow(''),
+  bio: Joi.string().allow(''),
+  skills: Joi.array().items(Joi.string()),
+  batch: Joi.number(),
+  department: Joi.string()
+});
+
+// Auth Routes
+router.post('/register', validate(registerSchema), userController.register);
+router.post('/login', rateLimiter, validate(loginSchema), userController.login);
+
+// Protected Routes - apply auth and logger
+router.use(authMiddleware, logger);
+
+router.get('/me', userController.getMe);
+router.get('/directory', userController.getDirectory);
+router.get('/profile/:id', userController.getProfile);
+router.put('/profile', validate(updateProfileSchema), userController.updateProfile);
+
+// Connections
+router.post('/connect/:targetId', userController.sendConnectionRequest);
+router.put('/connect/:requesterId/accept', userController.acceptConnection);
+router.put('/connect/:requesterId/decline', userController.declineConnection);
+
+// Admin Routes
+router.get('/admin/all', roleCheck('admin'), userController.getAllUsersAdmin);
+router.put('/admin/:id/role', roleCheck('admin'), userController.updateUserRoleAdmin);
+router.delete('/admin/:id', roleCheck('admin'), userController.deleteUserAdmin);
+
+module.exports = router;
+</file>
+
+<file path="backend/socket/socketHandler.js">
+module.exports = (io) => {
+  io.on('connection', (socket) => {
+    socket.on('join', (userId) => {
+      socket.join(userId);
+    });
+
+    socket.on('send-message', ({ to, text, senderId }) => {
+      io.to(to).emit('receive-message', { text, senderId, timestamp: new Date() });
+    });
+
+    socket.on('disconnect', () => {
+      console.log('Client disconnected:', socket.id);
+    });
+  });
+};
+</file>
+
+<file path="package.json">
+{
+  "name": "alumni-connect",
+  "version": "1.0.0",
+  "description": "Alumni Connect - Full Stack Application",
+  "scripts": {
+    "start": "concurrently --names \"BACKEND,REACT,ANGULAR\" --prefix-colors \"bgBlue.bold,bgGreen.bold,bgRed.bold\" \"npm start --prefix backend\" \"npm run dev --prefix react-app\" \"npm start --prefix angular-app\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+</file>
+
+<file path="react-app/.env.production">
+VITE_API_URL=
+</file>
+
+<file path="react-app/.gitignore">
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+</file>
+
+<file path="react-app/eslint.config.js">
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import { defineConfig, globalIgnores } from 'eslint/config'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{js,jsx}'],
+    extends: [
+      js.configs.recommended,
+      reactHooks.configs.flat.recommended,
+      reactRefresh.configs.vite,
+    ],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        ecmaFeatures: { jsx: true },
+        sourceType: 'module',
+      },
+    },
+    rules: {
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+    },
+  },
+])
+</file>
+
+<file path="react-app/index.html">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>react-app</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+</file>
+
+<file path="react-app/package.json">
+{
+  "name": "react-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.13.6",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-router-dom": "^7.13.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
+    "vite": "^8.0.1"
+  }
+}
+</file>
+
+<file path="react-app/public/favicon.svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="46" fill="none" viewBox="0 0 48 46"><path fill="#863bff" d="M25.946 44.938c-.664.845-2.021.375-2.021-.698V33.937a2.26 2.26 0 0 0-2.262-2.262H10.287c-.92 0-1.456-1.04-.92-1.788l7.48-10.471c1.07-1.497 0-3.578-1.842-3.578H1.237c-.92 0-1.456-1.04-.92-1.788L10.013.474c.214-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.471c-1.07 1.498 0 3.579 1.842 3.579h11.377c.943 0 1.473 1.088.89 1.83L25.947 44.94z" style="fill:#863bff;fill:color(display-p3 .5252 .23 1);fill-opacity:1"/><mask id="a" width="48" height="46" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha"><path fill="#000" d="M25.842 44.938c-.664.844-2.021.375-2.021-.698V33.937a2.26 2.26 0 0 0-2.262-2.262H10.183c-.92 0-1.456-1.04-.92-1.788l7.48-10.471c1.07-1.498 0-3.579-1.842-3.579H1.133c-.92 0-1.456-1.04-.92-1.787L9.91.473c.214-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.471c-1.07 1.498 0 3.578 1.842 3.578h11.377c.943 0 1.473 1.088.89 1.832L25.843 44.94z" style="fill:#000;fill-opacity:1"/></mask><g mask="url(#a)"><g filter="url(#b)"><ellipse cx="5.508" cy="14.704" fill="#ede6ff" rx="5.508" ry="14.704" style="fill:#ede6ff;fill:color(display-p3 .9275 .9033 1);fill-opacity:1" transform="matrix(.00324 1 1 -.00324 -4.47 31.516)"/></g><g filter="url(#c)"><ellipse cx="10.399" cy="29.851" fill="#ede6ff" rx="10.399" ry="29.851" style="fill:#ede6ff;fill:color(display-p3 .9275 .9033 1);fill-opacity:1" transform="matrix(.00324 1 1 -.00324 -39.328 7.883)"/></g><g filter="url(#d)"><ellipse cx="5.508" cy="30.487" fill="#7e14ff" rx="5.508" ry="30.487" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.814 -25.913 -14.639)scale(1 -1)"/></g><g filter="url(#e)"><ellipse cx="5.508" cy="30.599" fill="#7e14ff" rx="5.508" ry="30.599" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.814 -32.644 -3.334)scale(1 -1)"/></g><g filter="url(#f)"><ellipse cx="5.508" cy="30.599" fill="#7e14ff" rx="5.508" ry="30.599" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="matrix(.00324 1 1 -.00324 -34.34 30.47)"/></g><g filter="url(#g)"><ellipse cx="14.072" cy="22.078" fill="#ede6ff" rx="14.072" ry="22.078" style="fill:#ede6ff;fill:color(display-p3 .9275 .9033 1);fill-opacity:1" transform="rotate(93.35 24.506 48.493)scale(-1 1)"/></g><g filter="url(#h)"><ellipse cx="3.47" cy="21.501" fill="#7e14ff" rx="3.47" ry="21.501" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.009 28.708 47.59)scale(-1 1)"/></g><g filter="url(#i)"><ellipse cx="3.47" cy="21.501" fill="#7e14ff" rx="3.47" ry="21.501" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.009 28.708 47.59)scale(-1 1)"/></g><g filter="url(#j)"><ellipse cx=".387" cy="8.972" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(39.51 .387 8.972)"/></g><g filter="url(#k)"><ellipse cx="47.523" cy="-6.092" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 47.523 -6.092)"/></g><g filter="url(#l)"><ellipse cx="41.412" cy="6.333" fill="#47bfff" rx="5.971" ry="9.665" style="fill:#47bfff;fill:color(display-p3 .2799 .748 1);fill-opacity:1" transform="rotate(37.892 41.412 6.333)"/></g><g filter="url(#m)"><ellipse cx="-1.879" cy="38.332" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 -1.88 38.332)"/></g><g filter="url(#n)"><ellipse cx="-1.879" cy="38.332" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 -1.88 38.332)"/></g><g filter="url(#o)"><ellipse cx="35.651" cy="29.907" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 35.651 29.907)"/></g><g filter="url(#p)"><ellipse cx="38.418" cy="32.4" fill="#47bfff" rx="5.971" ry="15.297" style="fill:#47bfff;fill:color(display-p3 .2799 .748 1);fill-opacity:1" transform="rotate(37.892 38.418 32.4)"/></g></g><defs><filter id="b" width="60.045" height="41.654" x="-19.77" y="16.149" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="7.659"/></filter><filter id="c" width="90.34" height="51.437" x="-54.613" y="-7.533" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="7.659"/></filter><filter id="d" width="79.355" height="29.4" x="-49.64" y="2.03" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="e" width="79.579" height="29.4" x="-45.045" y="20.029" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="f" width="79.579" height="29.4" x="-43.513" y="21.178" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="g" width="74.749" height="58.852" x="15.756" y="-17.901" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="7.659"/></filter><filter id="h" width="61.377" height="25.362" x="23.548" y="2.284" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="i" width="61.377" height="25.362" x="23.548" y="2.284" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="j" width="56.045" height="63.649" x="-27.636" y="-22.853" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="k" width="54.814" height="64.646" x="20.116" y="-38.415" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="l" width="33.541" height="35.313" x="24.641" y="-11.323" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="m" width="54.814" height="64.646" x="-29.286" y="6.009" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="n" width="54.814" height="64.646" x="-29.286" y="6.009" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="o" width="54.814" height="64.646" x="8.244" y="-2.416" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="p" width="39.409" height="43.623" x="18.713" y="10.588" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter></defs></svg>
+</file>
+
+<file path="react-app/public/icons.svg">
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="bluesky-icon" viewBox="0 0 16 17">
+    <g clip-path="url(#bluesky-clip)"><path fill="#08060d" d="M7.75 7.735c-.693-1.348-2.58-3.86-4.334-5.097-1.68-1.187-2.32-.981-2.74-.79C.188 2.065.1 2.812.1 3.251s.241 3.602.398 4.13c.52 1.744 2.367 2.333 4.07 2.145-2.495.37-4.71 1.278-1.805 4.512 3.196 3.309 4.38-.71 4.987-2.746.608 2.036 1.307 5.91 4.93 2.746 2.72-2.746.747-4.143-1.747-4.512 1.702.189 3.55-.4 4.07-2.145.156-.528.397-3.691.397-4.13s-.088-1.186-.575-1.406c-.42-.19-1.06-.395-2.741.79-1.755 1.24-3.64 3.752-4.334 5.099"/></g>
+    <defs><clipPath id="bluesky-clip"><path fill="#fff" d="M.1.85h15.3v15.3H.1z"/></clipPath></defs>
+  </symbol>
+  <symbol id="discord-icon" viewBox="0 0 20 19">
+    <path fill="#08060d" d="M16.224 3.768a14.5 14.5 0 0 0-3.67-1.153c-.158.286-.343.67-.47.976a13.5 13.5 0 0 0-4.067 0c-.128-.306-.317-.69-.476-.976A14.4 14.4 0 0 0 3.868 3.77C1.546 7.28.916 10.703 1.231 14.077a14.7 14.7 0 0 0 4.5 2.306q.545-.748.965-1.587a9.5 9.5 0 0 1-1.518-.74q.191-.14.372-.293c2.927 1.369 6.107 1.369 8.999 0q.183.152.372.294-.723.437-1.52.74.418.838.963 1.588a14.6 14.6 0 0 0 4.504-2.308c.37-3.911-.63-7.302-2.644-10.309m-9.13 8.234c-.878 0-1.599-.82-1.599-1.82 0-.998.705-1.82 1.6-1.82.894 0 1.614.82 1.599 1.82.001 1-.705 1.82-1.6 1.82m5.91 0c-.878 0-1.599-.82-1.599-1.82 0-.998.705-1.82 1.6-1.82.893 0 1.614.82 1.599 1.82 0 1-.706 1.82-1.6 1.82"/>
+  </symbol>
+  <symbol id="documentation-icon" viewBox="0 0 21 20">
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="m15.5 13.333 1.533 1.322c.645.555.967.833.967 1.178s-.322.623-.967 1.179L15.5 18.333m-3.333-5-1.534 1.322c-.644.555-.966.833-.966 1.178s.322.623.966 1.179l1.534 1.321"/>
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="M17.167 10.836v-4.32c0-1.41 0-2.117-.224-2.68-.359-.906-1.118-1.621-2.08-1.96-.599-.21-1.349-.21-2.848-.21-2.623 0-3.935 0-4.983.369-1.684.591-3.013 1.842-3.641 3.428C3 6.449 3 7.684 3 10.154v2.122c0 2.558 0 3.838.706 4.726q.306.383.713.671c.76.536 1.79.64 3.581.66"/>
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="M3 10a2.78 2.78 0 0 1 2.778-2.778c.555 0 1.209.097 1.748-.047.48-.129.854-.503.982-.982.145-.54.048-1.194.048-1.749a2.78 2.78 0 0 1 2.777-2.777"/>
+  </symbol>
+  <symbol id="github-icon" viewBox="0 0 19 19">
+    <path fill="#08060d" fill-rule="evenodd" d="M9.356 1.85C5.05 1.85 1.57 5.356 1.57 9.694a7.84 7.84 0 0 0 5.324 7.44c.387.079.528-.168.528-.376 0-.182-.013-.805-.013-1.454-2.165.467-2.616-.935-2.616-.935-.349-.91-.864-1.143-.864-1.143-.71-.48.051-.48.051-.48.787.051 1.2.805 1.2.805.695 1.194 1.817.857 2.268.649.064-.507.27-.857.49-1.052-1.728-.182-3.545-.857-3.545-3.87 0-.857.31-1.558.8-2.104-.078-.195-.349-1 .077-2.078 0 0 .657-.208 2.14.805a7.5 7.5 0 0 1 1.946-.26c.657 0 1.328.092 1.946.26 1.483-1.013 2.14-.805 2.14-.805.426 1.078.155 1.883.078 2.078.502.546.799 1.247.799 2.104 0 3.013-1.818 3.675-3.558 3.87.284.247.528.714.528 1.454 0 1.052-.012 1.896-.012 2.156 0 .208.142.455.528.377a7.84 7.84 0 0 0 5.324-7.441c.013-4.338-3.48-7.844-7.773-7.844" clip-rule="evenodd"/>
+  </symbol>
+  <symbol id="social-icon" viewBox="0 0 20 20">
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="M12.5 6.667a4.167 4.167 0 1 0-8.334 0 4.167 4.167 0 0 0 8.334 0"/>
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="M2.5 16.667a5.833 5.833 0 0 1 8.75-5.053m3.837.474.513 1.035c.07.144.257.282.414.309l.93.155c.596.1.736.536.307.965l-.723.73a.64.64 0 0 0-.152.531l.207.903c.164.715-.213.991-.84.618l-.872-.52a.63.63 0 0 0-.577 0l-.872.52c-.624.373-1.003.094-.84-.618l.207-.903a.64.64 0 0 0-.152-.532l-.723-.729c-.426-.43-.289-.864.306-.964l.93-.156a.64.64 0 0 0 .412-.31l.513-1.034c.28-.562.735-.562 1.012 0"/>
+  </symbol>
+  <symbol id="x-icon" viewBox="0 0 19 19">
+    <path fill="#08060d" fill-rule="evenodd" d="M1.893 1.98c.052.072 1.245 1.769 2.653 3.77l2.892 4.114c.183.261.333.48.333.486s-.068.089-.152.183l-.522.593-.765.867-3.597 4.087c-.375.426-.734.834-.798.905a1 1 0 0 0-.118.148c0 .01.236.017.664.017h.663l.729-.83c.4-.457.796-.906.879-.999a692 692 0 0 0 1.794-2.038c.034-.037.301-.34.594-.675l.551-.624.345-.392a7 7 0 0 1 .34-.374c.006 0 .93 1.306 2.052 2.903l2.084 2.965.045.063h2.275c1.87 0 2.273-.003 2.266-.021-.008-.02-1.098-1.572-3.894-5.547-2.013-2.862-2.28-3.246-2.273-3.266.008-.019.282-.332 2.085-2.38l2-2.274 1.567-1.782c.022-.028-.016-.03-.65-.03h-.674l-.3.342a871 871 0 0 1-1.782 2.025c-.067.075-.405.458-.75.852a100 100 0 0 1-.803.91c-.148.172-.299.344-.99 1.127-.304.343-.32.358-.345.327-.015-.019-.904-1.282-1.976-2.808L6.365 1.85H1.8zm1.782.91 8.078 11.294c.772 1.08 1.413 1.973 1.425 1.984.016.017.241.02 1.05.017l1.03-.004-2.694-3.766L7.796 5.75 5.722 2.852l-1.039-.004-1.039-.004z" clip-rule="evenodd"/>
+  </symbol>
+</svg>
+</file>
+
+<file path="react-app/README.md">
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+</file>
+
+<file path="react-app/src/App.css">
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
+  }
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
+</file>
+
+<file path="react-app/src/App.jsx">
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
+import Navbar from './components/Navbar';
+
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Dashboard from './pages/Dashboard';
+import Directory from './pages/Directory';
+import AlumniProfile from './pages/AlumniProfile';
+import Opportunities from './pages/Opportunities';
+import PostJob from './pages/PostJob';
+import MyListings from './pages/MyListings';
+import MyApplications from './pages/MyApplications';
+import AdminPanel from './pages/AdminPanel';
+import Notifications from './pages/Notifications';
+import Networking from './pages/Networking';
+
+function App() {
+  return (
+    <AuthProvider>
+      <Router>
+        <Navbar />
+        <div className="container" style={{ padding: '20px' }}>
+          <Routes>
+            <Route path="/" element={<Navigate to="/dashboard" />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+
+            <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+            <Route path="/directory" element={<ProtectedRoute><Directory /></ProtectedRoute>} />
+            <Route path="/alumni/:id" element={<ProtectedRoute><AlumniProfile /></ProtectedRoute>} />
+            <Route path="/opportunities" element={<ProtectedRoute><Opportunities /></ProtectedRoute>} />
+            <Route path="/notifications" element={<ProtectedRoute><Notifications /></ProtectedRoute>} />
+            <Route path="/networking" element={<ProtectedRoute><Networking /></ProtectedRoute>} />
+            
+            <Route path="/post-job" element={<ProtectedRoute requiredRole="alumni"><PostJob /></ProtectedRoute>} />
+            <Route path="/my-listings" element={<ProtectedRoute requiredRole="alumni"><MyListings /></ProtectedRoute>} />
+            
+            <Route path="/my-applications" element={<ProtectedRoute requiredRole="student"><MyApplications /></ProtectedRoute>} />
+            
+            <Route path="/admin" element={<ProtectedRoute requiredRole="admin"><AdminPanel /></ProtectedRoute>} />
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
+  );
+}
+
+export default App;
+</file>
+
+<file path="react-app/src/assets/react.svg">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="35.93" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 228"><path fill="#00D8FF" d="M210.483 73.824a171.49 171.49 0 0 0-8.24-2.597c.465-1.9.893-3.777 1.273-5.621c6.238-30.281 2.16-54.676-11.769-62.708c-13.355-7.7-35.196.329-57.254 19.526a171.23 171.23 0 0 0-6.375 5.848a155.866 155.866 0 0 0-4.241-3.917C100.759 3.829 77.587-4.822 63.673 3.233C50.33 10.957 46.379 33.89 51.995 62.588a170.974 170.974 0 0 0 1.892 8.48c-3.28.932-6.445 1.924-9.474 2.98C17.309 83.498 0 98.307 0 113.668c0 15.865 18.582 31.778 46.812 41.427a145.52 145.52 0 0 0 6.921 2.165a167.467 167.467 0 0 0-2.01 9.138c-5.354 28.2-1.173 50.591 12.134 58.266c13.744 7.926 36.812-.22 59.273-19.855a145.567 145.567 0 0 0 5.342-4.923a168.064 168.064 0 0 0 6.92 6.314c21.758 18.722 43.246 26.282 56.54 18.586c13.731-7.949 18.194-32.003 12.4-61.268a145.016 145.016 0 0 0-1.535-6.842c1.62-.48 3.21-.974 4.76-1.488c29.348-9.723 48.443-25.443 48.443-41.52c0-15.417-17.868-30.326-45.517-39.844Zm-6.365 70.984c-1.4.463-2.836.91-4.3 1.345c-3.24-10.257-7.612-21.163-12.963-32.432c5.106-11 9.31-21.767 12.459-31.957c2.619.758 5.16 1.557 7.61 2.4c23.69 8.156 38.14 20.213 38.14 29.504c0 9.896-15.606 22.743-40.946 31.14Zm-10.514 20.834c2.562 12.94 2.927 24.64 1.23 33.787c-1.524 8.219-4.59 13.698-8.382 15.893c-8.067 4.67-25.32-1.4-43.927-17.412a156.726 156.726 0 0 1-6.437-5.87c7.214-7.889 14.423-17.06 21.459-27.246c12.376-1.098 24.068-2.894 34.671-5.345a134.17 134.17 0 0 1 1.386 6.193ZM87.276 214.515c-7.882 2.783-14.16 2.863-17.955.675c-8.075-4.657-11.432-22.636-6.853-46.752a156.923 156.923 0 0 1 1.869-8.499c10.486 2.32 22.093 3.988 34.498 4.994c7.084 9.967 14.501 19.128 21.976 27.15a134.668 134.668 0 0 1-4.877 4.492c-9.933 8.682-19.886 14.842-28.658 17.94ZM50.35 144.747c-12.483-4.267-22.792-9.812-29.858-15.863c-6.35-5.437-9.555-10.836-9.555-15.216c0-9.322 13.897-21.212 37.076-29.293c2.813-.98 5.757-1.905 8.812-2.773c3.204 10.42 7.406 21.315 12.477 32.332c-5.137 11.18-9.399 22.249-12.634 32.792a134.718 134.718 0 0 1-6.318-1.979Zm12.378-84.26c-4.811-24.587-1.616-43.134 6.425-47.789c8.564-4.958 27.502 2.111 47.463 19.835a144.318 144.318 0 0 1 3.841 3.545c-7.438 7.987-14.787 17.08-21.808 26.988c-12.04 1.116-23.565 2.908-34.161 5.309a160.342 160.342 0 0 1-1.76-7.887Zm110.427 27.268a347.8 347.8 0 0 0-7.785-12.803c8.168 1.033 15.994 2.404 23.343 4.08c-2.206 7.072-4.956 14.465-8.193 22.045a381.151 381.151 0 0 0-7.365-13.322Zm-45.032-43.861c5.044 5.465 10.096 11.566 15.065 18.186a322.04 322.04 0 0 0-30.257-.006c4.974-6.559 10.069-12.652 15.192-18.18ZM82.802 87.83a323.167 323.167 0 0 0-7.227 13.238c-3.184-7.553-5.909-14.98-8.134-22.152c7.304-1.634 15.093-2.97 23.209-3.984a321.524 321.524 0 0 0-7.848 12.897Zm8.081 65.352c-8.385-.936-16.291-2.203-23.593-3.793c2.26-7.3 5.045-14.885 8.298-22.6a321.187 321.187 0 0 0 7.257 13.246c2.594 4.48 5.28 8.868 8.038 13.147Zm37.542 31.03c-5.184-5.592-10.354-11.779-15.403-18.433c4.902.192 9.899.29 14.978.29c5.218 0 10.376-.117 15.453-.343c-4.985 6.774-10.018 12.97-15.028 18.486Zm52.198-57.817c3.422 7.8 6.306 15.345 8.596 22.52c-7.422 1.694-15.436 3.058-23.88 4.071a382.417 382.417 0 0 0 7.859-13.026a347.403 347.403 0 0 0 7.425-13.565Zm-16.898 8.101a358.557 358.557 0 0 1-12.281 19.815a329.4 329.4 0 0 1-23.444.823c-7.967 0-15.716-.248-23.178-.732a310.202 310.202 0 0 1-12.513-19.846h.001a307.41 307.41 0 0 1-10.923-20.627a310.278 310.278 0 0 1 10.89-20.637l-.001.001a307.318 307.318 0 0 1 12.413-19.761c7.613-.576 15.42-.876 23.31-.876H128c7.926 0 15.743.303 23.354.883a329.357 329.357 0 0 1 12.335 19.695a358.489 358.489 0 0 1 11.036 20.54a329.472 329.472 0 0 1-11 20.722Zm22.56-122.124c8.572 4.944 11.906 24.881 6.52 51.026c-.344 1.668-.73 3.367-1.15 5.09c-10.622-2.452-22.155-4.275-34.23-5.408c-7.034-10.017-14.323-19.124-21.64-27.008a160.789 160.789 0 0 1 5.888-5.4c18.9-16.447 36.564-22.941 44.612-18.3ZM128 90.808c12.625 0 22.86 10.235 22.86 22.86s-10.235 22.86-22.86 22.86s-22.86-10.235-22.86-22.86s10.235-22.86 22.86-22.86Z"></path></svg>
+</file>
+
+<file path="react-app/src/assets/vite.svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="77" height="47" fill="none" aria-labelledby="vite-logo-title" viewBox="0 0 77 47"><title id="vite-logo-title">Vite</title><style>.parenthesis{fill:#000}@media (prefers-color-scheme:dark){.parenthesis{fill:#fff}}</style><path fill="#9135ff" d="M40.151 45.71c-.663.844-2.02.374-2.02-.699V34.708a2.26 2.26 0 0 0-2.262-2.262H24.493c-.92 0-1.457-1.04-.92-1.788l7.479-10.471c1.07-1.498 0-3.578-1.842-3.578H15.443c-.92 0-1.456-1.04-.92-1.788l9.696-13.576c.213-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.472c-1.07 1.497 0 3.578 1.842 3.578h11.376c.944 0 1.474 1.087.89 1.83L40.153 45.712z"/><mask id="a" width="48" height="47" x="14" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha"><path fill="#000" d="M40.047 45.71c-.663.843-2.02.374-2.02-.699V34.708a2.26 2.26 0 0 0-2.262-2.262H24.389c-.92 0-1.457-1.04-.92-1.788l7.479-10.472c1.07-1.497 0-3.578-1.842-3.578H15.34c-.92 0-1.456-1.04-.92-1.788l9.696-13.575c.213-.297.556-.474.92-.474H53.93c.92 0 1.456 1.04.92 1.788L47.37 13.03c-1.07 1.498 0 3.578 1.842 3.578h11.376c.944 0 1.474 1.088.89 1.831L40.049 45.712z"/></mask><g mask="url(#a)"><g filter="url(#b)"><ellipse cx="5.508" cy="14.704" fill="#eee6ff" rx="5.508" ry="14.704" transform="rotate(269.814 20.96 11.29)scale(-1 1)"/></g><g filter="url(#c)"><ellipse cx="10.399" cy="29.851" fill="#eee6ff" rx="10.399" ry="29.851" transform="rotate(89.814 -16.902 -8.275)scale(1 -1)"/></g><g filter="url(#d)"><ellipse cx="5.508" cy="30.487" fill="#8900ff" rx="5.508" ry="30.487" transform="rotate(89.814 -19.197 -7.127)scale(1 -1)"/></g><g filter="url(#e)"><ellipse cx="5.508" cy="30.599" fill="#8900ff" rx="5.508" ry="30.599" transform="rotate(89.814 -25.928 4.177)scale(1 -1)"/></g><g filter="url(#f)"><ellipse cx="5.508" cy="30.599" fill="#8900ff" rx="5.508" ry="30.599" transform="rotate(89.814 -25.738 5.52)scale(1 -1)"/></g><g filter="url(#g)"><ellipse cx="14.072" cy="22.078" fill="#eee6ff" rx="14.072" ry="22.078" transform="rotate(93.35 31.245 55.578)scale(-1 1)"/></g><g filter="url(#h)"><ellipse cx="3.47" cy="21.501" fill="#8900ff" rx="3.47" ry="21.501" transform="rotate(89.009 35.419 55.202)scale(-1 1)"/></g><g filter="url(#i)"><ellipse cx="3.47" cy="21.501" fill="#8900ff" rx="3.47" ry="21.501" transform="rotate(89.009 35.419 55.202)scale(-1 1)"/></g><g filter="url(#j)"><ellipse cx="14.592" cy="9.743" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(39.51 14.592 9.743)"/></g><g filter="url(#k)"><ellipse cx="61.728" cy="-5.321" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 61.728 -5.32)"/></g><g filter="url(#l)"><ellipse cx="55.618" cy="7.104" fill="#00c2ff" rx="5.971" ry="9.665" transform="rotate(37.892 55.618 7.104)"/></g><g filter="url(#m)"><ellipse cx="12.326" cy="39.103" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 12.326 39.103)"/></g><g filter="url(#n)"><ellipse cx="12.326" cy="39.103" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 12.326 39.103)"/></g><g filter="url(#o)"><ellipse cx="49.857" cy="30.678" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 49.857 30.678)"/></g><g filter="url(#p)"><ellipse cx="52.623" cy="33.171" fill="#00c2ff" rx="5.971" ry="15.297" transform="rotate(37.892 52.623 33.17)"/></g></g><path d="M6.919 0c-9.198 13.166-9.252 33.575 0 46.789h6.215c-9.25-13.214-9.196-33.623 0-46.789zm62.424 0h-6.215c9.198 13.166 9.252 33.575 0 46.789h6.215c9.25-13.214 9.196-33.623 0-46.789" class="parenthesis"/><defs><filter id="b" width="60.045" height="41.654" x="-5.564" y="16.92" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="c" width="90.34" height="51.437" x="-40.407" y="-6.762" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="d" width="79.355" height="29.4" x="-35.435" y="2.801" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="e" width="79.579" height="29.4" x="-30.84" y="20.8" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="f" width="79.579" height="29.4" x="-29.307" y="21.949" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="g" width="74.749" height="58.852" x="29.961" y="-17.13" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="h" width="61.377" height="25.362" x="37.754" y="3.055" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="i" width="61.377" height="25.362" x="37.754" y="3.055" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="j" width="56.045" height="63.649" x="-13.43" y="-22.082" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="k" width="54.814" height="64.646" x="34.321" y="-37.644" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="l" width="33.541" height="35.313" x="38.847" y="-10.552" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="m" width="54.814" height="64.646" x="-15.081" y="6.78" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="n" width="54.814" height="64.646" x="-15.081" y="6.78" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="o" width="54.814" height="64.646" x="22.45" y="-1.645" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="p" width="39.409" height="43.623" x="32.919" y="11.36" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter></defs></svg>
+</file>
+
+<file path="react-app/src/components/ApplicationStatusBadge.jsx">
+import React from 'react';
+
+const ApplicationStatusBadge = ({ status }) => {
+  const colorMap = {
+    applied: { bg: '#E3F2FD', text: '#1565C0', label: 'Applied' },
+    under_review: { bg: '#FFF3E0', text: '#E65100', label: 'Under Review' },
+    accepted: { bg: '#E8F5E9', text: '#2E7D32', label: 'Accepted' },
+    rejected: { bg: '#FFEBEE', text: '#C62828', label: 'Rejected' },
+  };
+
+  const current = colorMap[status] || colorMap.applied;
+
+  return (
+    <span style={{ 
+      backgroundColor: current.bg, 
+      color: current.text, 
+      padding: '4px 8px', 
+      borderRadius: '4px', 
+      fontSize: '12px',
+      fontWeight: 'bold'
+    }}>
+      {current.label}
+    </span>
+  );
+};
+
+export default ApplicationStatusBadge;
+</file>
+
+<file path="react-app/src/components/FilterPanel.jsx">
+import React, { useState } from 'react';
+
+const FilterPanel = ({ onFilter }) => {
+  const [batch, setBatch] = useState('');
+  const [department, setDepartment] = useState('');
+  const [skills, setSkills] = useState('');
+
+  const handleApply = () => {
+    onFilter({ batch, department, skills });
+  };
+
+  const handleClear = () => {
+    setBatch('');
+    setDepartment('');
+    setSkills('');
+    onFilter({});
+  };
+
+  return (
+    <div className="card" style={{ background: 'var(--bg)' }}>
+      <h4>Filters</h4>
+      <input type="number" placeholder="Batch Year" value={batch} onChange={e => setBatch(e.target.value)} />
+      <input type="text" placeholder="Department" value={department} onChange={e => setDepartment(e.target.value)} />
+      <input type="text" placeholder="Skills (comma separated)" value={skills} onChange={e => setSkills(e.target.value)} />
+      
+      <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+        <button className="btn-primary" onClick={handleApply}>Apply</button>
+        <button className="btn-secondary" onClick={handleClear}>Clear</button>
+      </div>
+    </div>
+  );
+};
+
+export default FilterPanel;
+</file>
+
+<file path="react-app/src/components/JobCard.jsx">
+import React from 'react';
+
+const JobCard = ({ job, onApply, hasApplied, isStudent }) => {
+  const { title, company, type, requiredSkills, deadline, postedBy } = job;
+  
+  const typeColors = {
+    job: 'var(--success)',
+    internship: 'var(--info)',
+    mentorship: 'var(--warning)'
+  };
+
+  return (
+    <div className="card">
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <div>
+          <h3 style={{ margin: '0 0 5px 0' }}>{title}</h3>
+          <p style={{ margin: '0 0 10px 0', fontWeight: 'bold' }}>{company}</p>
+        </div>
+        <span style={{ background: typeColors[type], color: 'white', padding: '4px 8px', borderRadius: '4px', fontSize: '12px', textTransform: 'capitalize' }}>
+          {type}
+        </span>
+      </div>
+      
+      <p style={{ fontSize: '14px', color: 'var(--text-secondary)' }}>
+        Posted by: {postedBy?.name || 'Unknown'} | Deadline: {deadline ? new Date(deadline).toLocaleDateString() : 'N/A'}
+      </p>
+
+      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', margin: '10px 0' }}>
+        {requiredSkills && requiredSkills.map((s, i) => (
+          <span key={i} style={{ background: 'var(--bg)', border: '1px solid var(--border)', padding: '2px 8px', borderRadius: '4px', fontSize: '12px' }}>{s}</span>
+        ))}
+      </div>
+
+      {isStudent && (
+        <div style={{ textAlign: 'right', marginTop: '10px' }}>
+          {hasApplied ? (
+            <button className="btn-secondary" disabled>Already Applied</button>
+          ) : (
+            <button className="btn-primary" onClick={() => onApply(job._id)}>Apply</button>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default JobCard;
+</file>
+
+<file path="react-app/src/components/ProfileCard.jsx">
+import React from 'react';
+
+const ProfileCard = ({ user, onConnect, connectionStatus }) => {
+  const { name, designation, company, batch, skills } = user;
+  
+  const getInitials = (n) => n ? n.split(' ').map(w => w[0]).join('').substring(0,2).toUpperCase() : '?';
+
+  return (
+    <div className="card" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+      <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'var(--accent)', color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '24px', fontWeight: 'bold' }}>
+        {getInitials(name)}
+      </div>
+      <div style={{ flex: 1 }}>
+        <h3 style={{ margin: '0 0 5px 0' }}>{name}</h3>
+        <p style={{ margin: '0 0 5px 0', color: 'var(--text-secondary)' }}>
+          {designation} {company ? `at ${company}` : ''} | Batch: {batch}
+        </p>
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '10px' }}>
+          {skills && skills.slice(0, 3).map((s, i) => (
+            <span key={i} style={{ background: 'var(--bg)', padding: '2px 8px', borderRadius: '12px', fontSize: '12px' }}>{s}</span>
+          ))}
+          {skills && skills.length > 3 && (
+            <span style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>+{skills.length - 3} more</span>
+          )}
+        </div>
+      </div>
+      <div>
+        {connectionStatus === 'connected' ? (
+          <button className="btn-secondary" disabled>Connected</button>
+        ) : connectionStatus === 'pending' ? (
+          <button className="btn-secondary" disabled>Pending</button>
+        ) : (
+          <button className="btn-primary" onClick={() => onConnect(user._id)}>Connect</button>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default ProfileCard;
+</file>
+
+<file path="react-app/src/components/ProtectedRoute.jsx">
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
+
+const ProtectedRoute = ({ children, requiredRole }) => {
+  const { user } = useAuth();
+  if (!user) return <Navigate to="/login" />;
+  if (requiredRole && user.role !== requiredRole) return <div>Access denied</div>;
+  return children;
+};
+
+export default ProtectedRoute;
+</file>
+
+<file path="react-app/src/components/SearchBar.jsx">
+import React, { useState, useEffect } from 'react';
+
+const SearchBar = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      onSearch(searchTerm);
+    }, 500);
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchTerm, onSearch]);
+
+  return (
+    <div style={{ position: 'relative', marginBottom: '20px' }}>
+      <span style={{ position: 'absolute', left: '10px', top: '10px' }}>🔍</span>
+      <input 
+        type="text"
+        placeholder="Search directory by name or company..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        style={{ paddingLeft: '35px' }}
+      />
+    </div>
+  );
+};
+
+export default SearchBar;
+</file>
+
+<file path="react-app/src/config/api.js">
+// Base API URL: empty string in production (same-origin), localhost in dev
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
+export default API_BASE;
+</file>
+
+<file path="react-app/src/context/AuthContext.jsx">
+import React, { createContext, useState } from 'react';
+
+export const AuthContext = createContext();
+
+// Decode token synchronously so user is never null on first render
+const decodeToken = (token) => {
+  if (!token) return null;
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return { id: payload.id, role: payload.role };
+  } catch (e) {
+    return null;
+  }
+};
+
+const storedToken = localStorage.getItem('token') || null;
+
+export const AuthProvider = ({ children }) => {
+  const [token, setToken] = useState(storedToken);
+  // Initialize user at the same time as token — fixes the race condition
+  // where useEffect hadn't run yet and ProtectedRoute saw user===null
+  const [user, setUser] = useState(() => decodeToken(storedToken));
+
+  const login = (newToken, userData) => {
+    localStorage.setItem('token', newToken);
+    if (userData && userData._id) {
+      localStorage.setItem('userId', userData._id); // for Angular app compat
+    }
+    setToken(newToken);
+    // Always decode user from the token so it's consistent with what
+    // ProtectedRoute sees on fresh page loads
+    setUser(decodeToken(newToken));
+  };
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    setToken(null);
+    setUser(null);
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, token, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+</file>
+
+<file path="react-app/src/hooks/useAuth.js">
+import { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
+
+const useAuth = () => {
+  return useContext(AuthContext);
+};
+
+export default useAuth;
+</file>
+
+<file path="react-app/src/index.css">
+:root {
+  --primary: #1E3A5F;
+  --primary-light: #2E5F8A;
+  --accent: #4A90D9;
+  --bg: #F4F7FB;
+  --card-bg: #FFFFFF;
+  --text-primary: #1A1A2E;
+  --text-secondary: #666;
+  --border: #E0E7EF;
+  --success: #27AE60;
+  --warning: #F39C12;
+  --danger: #E74C3C;
+  --info: #3498DB;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text-primary);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin-bottom: 16px;
+}
+
+button {
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:active {
+  background-color: var(--primary-light);
+}
+
+.btn-secondary {
+  background-color: white;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+input, select, textarea {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.auth-container {
+  max-width: 400px;
+  margin: 40px auto;
+  text-align: center;
+}
+</file>
+
+<file path="react-app/src/main.jsx">
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import './index.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);
+</file>
+
+<file path="react-app/vite.config.js">
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+})
+</file>
+
+<file path="react-app/src/components/Navbar.jsx">
+import API_BASE from '../config/api';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
+import axios from 'axios';
+
+const Navbar = () => {
+  const { user, token, logout } = useAuth();
+  const navigate = useNavigate();
+  const [unreadCount, setUnreadCount] = useState(0);
+
+  useEffect(() => {
+    if (user && token) {
+      axios.get(`${API_BASE}/api/notify/unread-count`, {
+        headers: { Authorization: `Bearer ${token}` }
+      }).then(res => setUnreadCount(res.data.count))
+        .catch(() => {});
+    }
+  }, [user, token]);
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
+
+  return (
+    <nav style={{ background: 'var(--primary)', color: 'white', display: 'flex', justifyContent: 'space-between', padding: '0 20px', alignItems: 'center', height: '60px' }}>
+      <h2 style={{ margin: 0 }}>Alumni Connect</h2>
+      {user && (
+        <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+          <Link to="/dashboard" style={{ color: 'white', textDecoration: 'none' }}>Dashboard</Link>
+          <Link to="/directory" style={{ color: 'white', textDecoration: 'none' }}>Directory</Link>
+          <Link to="/opportunities" style={{ color: 'white', textDecoration: 'none' }}>Opportunities</Link>
+          
+          <Link to="/notifications" style={{ color: 'white', textDecoration: 'none' }}>
+            Notifications {unreadCount > 0 && <span style={{ background: 'red', borderRadius: '50%', padding: '2px 6px', fontSize: '12px' }}>{unreadCount}</span>}
+          </Link>
+          <Link to="/networking" style={{ color: 'white', textDecoration: 'none' }}>
+            Networking
+          </Link>
+
+          {user.role === 'alumni' && (
+            <>
+              <Link to="/my-listings" style={{ color: 'white', textDecoration: 'none' }}>My Listings</Link>
+              <Link to="/post-job" style={{ color: 'white', textDecoration: 'none' }}>Post Job</Link>
+            </>
+          )}
+
+          {user.role === 'student' && (
+            <Link to="/my-applications" style={{ color: 'white', textDecoration: 'none' }}>My Applications</Link>
+          )}
+
+          {user.role === 'admin' && (
+            <Link to="/admin" style={{ color: 'white', textDecoration: 'none' }}>Admin Panel</Link>
+          )}
+
+          <button onClick={handleLogout} className="btn-secondary" style={{ padding: '4px 10px' }}>Logout</button>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;
+</file>
+
+<file path="react-app/src/hooks/useFetch.js">
+import API_BASE from '../config/api';
+import { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
+import { AuthContext } from '../context/AuthContext';
+
+const useFetch = (url, dependencies = []) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const { token } = useContext(AuthContext);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(`${API_BASE}/api${url}`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        setData(response.data);
+        setError(null);
+      } catch (err) {
+        setError(err.response?.data?.message || 'Something went wrong');
+      } finally {
+        setLoading(false);
+      }
+    };
+    if (token) {
+      fetchData();
+    }
+  }, [url, token, ...dependencies]);
+
+  return { data, loading, error, setData };
+};
+
+export default useFetch;
+</file>
+
+<file path="react-app/src/pages/AdminPanel.jsx">
+import API_BASE from '../config/api';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import useAuth from '../hooks/useAuth';
+
+const AdminPanel = () => {
+  const { token } = useAuth();
+  const [tab, setTab] = useState('users'); // users, listings, stats
+  const [users, setUsers] = useState([]);
+  const [jobs, setJobs] = useState([]);
+
+  useEffect(() => {
+    fetchUsers();
+    fetchJobs();
+  }, []);
+
+  const fetchUsers = async () => {
+    try {
+      const res = await axios.get(`${API_BASE}/api/users/admin/all`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setUsers(res.data);
+    } catch (err) { }
+  };
+
+  const fetchJobs = async () => {
+    try {
+      // Actually /api/jobs only returns active jobs and needs no admin check,
+      // But for admin to delete, they can use it.
+      const res = await axios.get(`${API_BASE}/api/jobs`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setJobs(res.data);
+    } catch (err) { }
+  };
+
+  const handleDeleteUser = async (id) => {
+    if(!window.confirm('Are you sure?')) return;
+    try {
+      await axios.delete(`http://localhost:5000/api/users/admin/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+      fetchUsers();
+    } catch (err) { alert('Failed to delete user'); }
+  };
+
+  const handleRoleChange = async (id, newRole) => {
+    try {
+      await axios.put(`http://localhost:5000/api/users/admin/${id}/role`, { role: newRole }, { headers: { Authorization: `Bearer ${token}` } });
+      fetchUsers();
+    } catch (err) { alert('Failed to change role'); }
+  };
+
+  const handleDeleteJob = async (id) => {
+    if(!window.confirm('Delete this listing?')) return;
+    try {
+      await axios.delete(`http://localhost:5000/api/jobs/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+      fetchJobs();
+    } catch (err) { alert('Failed to delete listing'); }
+  };
+
+  const renderStats = () => {
+    const studentsCount = users.filter(u => u.role === 'student').length;
+    const alumniCount = users.filter(u => u.role === 'alumni').length;
+    const totalApplications = jobs.reduce((acc, job) => acc + (job.applicants ? job.applicants.length : 0), 0);
+
+    return (
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+        <div className="card">
+          <h3>User Stats</h3>
+          <p>Total Students: {studentsCount}</p>
+          <p>Total Alumni: {alumniCount}</p>
+          <p>Admins: {users.filter(u => u.role === 'admin').length}</p>
+        </div>
+        <div className="card">
+          <h3>Platform Stats</h3>
+          <p>Total Job Listings: {jobs.length}</p>
+          <p>Total Applications Submitted: {totalApplications}</p>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div>
+      <h2>Admin Panel</h2>
+      <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
+        <button className={tab === 'users' ? 'btn-primary' : 'btn-secondary'} onClick={() => setTab('users')}>Manage Users</button>
+        <button className={tab === 'listings' ? 'btn-primary' : 'btn-secondary'} onClick={() => setTab('listings')}>Manage Listings</button>
+        <button className={tab === 'stats' ? 'btn-primary' : 'btn-secondary'} onClick={() => setTab('stats')}>Platform Stats</button>
+      </div>
+
+      {tab === 'stats' && renderStats()}
+
+      {tab === 'users' && (
+        <div className="card">
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+            <thead>
+              <tr style={{ borderBottom: '1px solid var(--border)' }}>
+                <th>Name</th><th>Email</th><th>Role</th><th>Batch</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map(u => (
+                <tr key={u._id} style={{ borderBottom: '1px solid var(--border)' }}>
+                  <td style={{ padding: '8px' }}>{u.name}</td>
+                  <td style={{ padding: '8px' }}>{u.email}</td>
+                  <td style={{ padding: '8px' }}>
+                    <select value={u.role} onChange={e => handleRoleChange(u._id, e.target.value)} style={{ margin: 0 }}>
+                      <option value="student">Student</option>
+                      <option value="alumni">Alumni</option>
+                      <option value="admin">Admin</option>
+                    </select>
+                  </td>
+                  <td style={{ padding: '8px' }}>{u.batch || 'N/A'}</td>
+                  <td style={{ padding: '8px' }}>
+                    <button onClick={() => handleDeleteUser(u._id)} style={{ background: 'var(--danger)', color: 'white', border: 'none', padding: '4px 8px', borderRadius: '4px' }}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {tab === 'listings' && (
+        <div className="card">
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+            <thead>
+              <tr style={{ borderBottom: '1px solid var(--border)' }}>
+                <th>Title</th><th>Company</th><th>Type</th><th>Posted By</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {jobs.map(j => (
+                <tr key={j._id} style={{ borderBottom: '1px solid var(--border)' }}>
+                  <td style={{ padding: '8px' }}>{j.title}</td>
+                  <td style={{ padding: '8px' }}>{j.company}</td>
+                  <td style={{ padding: '8px', textTransform: 'capitalize' }}>{j.type}</td>
+                  <td style={{ padding: '8px' }}>{j.postedBy?.name || 'Unknown'}</td>
+                  <td style={{ padding: '8px' }}>
+                    <button onClick={() => handleDeleteJob(j._id)} style={{ background: 'var(--danger)', color: 'white', border: 'none', padding: '4px 8px', borderRadius: '4px' }}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+    </div>
+  );
+};
+
+export default AdminPanel;
+</file>
+
+<file path="react-app/src/pages/AlumniProfile.jsx">
+import API_BASE from '../config/api';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import useAuth from '../hooks/useAuth';
+
+const AlumniProfile = () => {
+  const { id } = useParams();
+  const { token, user: currentUser } = useAuth();
+  const [profile, setProfile] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editForm, setEditForm] = useState({});
+  const [meData, setMeData] = useState(null);
+
+  useEffect(() => {
+    fetchData();
+  }, [id]);
+
+  const fetchData = async () => {
+    try {
+      const [profRes, meRes] = await Promise.all([
+        axios.get(`http://localhost:5000/api/users/profile/${id}`, { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get(`${API_BASE}/api/users/me`, { headers: { Authorization: `Bearer ${token}` } })
+      ]);
+      setProfile(profRes.data);
+      setEditForm(profRes.data);
+      setMeData(meRes.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleConnect = async () => {
+    try {
+      await axios.post(`http://localhost:5000/api/users/connect/${id}`, {}, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      fetchData();
+      alert('Request sent');
+    } catch (err) {
+      alert(err.response?.data?.message || 'Error');
+    }
+  };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      // Only send the fields allowed by the Joi updateProfileSchema
+      // Sending the full editForm (entire user object) causes Joi to reject
+      // unknown fields like _id, email, role, connections, etc. → 400 error
+      const { name, company, designation, bio, skills, batch, department } = editForm;
+      const payload = {
+        name,
+        company,
+        designation,
+        bio,
+        batch: batch ? Number(batch) : undefined,
+        department,
+        skills: typeof skills === 'string'
+          ? skills.split(',').map(s => s.trim()).filter(s => s)
+          : skills
+      };
+      // Remove undefined keys to keep the payload clean
+      Object.keys(payload).forEach(k => payload[k] === undefined && delete payload[k]);
+
+      await axios.put(`${API_BASE}/api/users/profile`, payload, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setIsEditing(false);
+      fetchData();
+      alert('Profile updated successfully!');
+    } catch (err) {
+      alert(err.response?.data?.message || 'Failed to update profile');
+    }
+  };
+
+  if (!profile || !meData) return <div>Loading...</div>;
+
+  // Use .some() + toString() to reliably compare serialized ObjectId strings
+  const isConnected = meData.connections.some(c => c.toString() === profile._id.toString());
+  const isPending = profile.connectionRequests?.some(r => r.from?.toString() === meData._id?.toString() && r.status === 'pending');
+  const isOwnProfile = currentUser.id === profile._id;
+
+  return (
+    <div className="card" style={{ maxWidth: '800px', margin: '0 auto' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <h2>{profile.name}</h2>
+        {isOwnProfile && <button className="btn-secondary" onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'Cancel Edit' : 'Edit Profile'}</button>}
+      </div>
+      
+      {isEditing ? (
+        <form onSubmit={handleUpdate}>
+          <label>Full Name</label>
+          <input type="text" value={editForm.name || ''} onChange={e=>setEditForm({...editForm, name: e.target.value})} placeholder="Full Name" />
+          <label>Designation</label>
+          <input type="text" value={editForm.designation || ''} onChange={e=>setEditForm({...editForm, designation: e.target.value})} placeholder="Designation" />
+          <label>Company</label>
+          <input type="text" value={editForm.company || ''} onChange={e=>setEditForm({...editForm, company: e.target.value})} placeholder="Company" />
+          <label>Batch Year</label>
+          <input type="number" value={editForm.batch || ''} onChange={e=>setEditForm({...editForm, batch: e.target.value})} placeholder="Batch Year" />
+          <label>Department</label>
+          <input type="text" value={editForm.department || ''} onChange={e=>setEditForm({...editForm, department: e.target.value})} placeholder="Department" />
+          <label>Bio</label>
+          <textarea value={editForm.bio || ''} onChange={e=>setEditForm({...editForm, bio: e.target.value})} placeholder="Bio" rows="4"></textarea>
+          <label>Skills</label>
+          <input type="text" value={Array.isArray(editForm.skills) ? editForm.skills.join(', ') : editForm.skills} onChange={e=>setEditForm({...editForm, skills: e.target.value})} placeholder="Skills (comma separated)" />
+          <button type="submit" className="btn-primary">Save Changes</button>
+        </form>
+      ) : (
+        <div>
+          <h4 style={{ color: 'var(--text-secondary)' }}>{profile.designation} {profile.company && `at ${profile.company}`}</h4>
+          <p><strong>Batch:</strong> {profile.batch} | <strong>Dept:</strong> {profile.department}</p>
+          <p><strong>Bio:</strong> {profile.bio || 'No bio provided.'}</p>
+          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', margin: '15px 0' }}>
+            {profile.skills?.map((s, i) => (
+              <span key={i} style={{ background: 'var(--bg)', border: '1px solid var(--border)', padding: '4px 10px', borderRadius: '16px' }}>{s}</span>
+            ))}
+          </div>
+
+          {!isOwnProfile && (
+            <div style={{ marginTop: '20px', borderTop: '1px solid var(--border)', paddingTop: '20px' }}>
+              {isConnected ? (
+                <a href={`http://localhost:4200/chat/${profile._id}?userId=${currentUser.id}&token=${token}`} className="btn-primary" style={{ textDecoration: 'none', display: 'inline-block' }}>Open Chat</a>
+              ) : isPending ? (
+                <button className="btn-secondary" disabled>Request Pending</button>
+              ) : (
+                <button className="btn-primary" onClick={handleConnect}>Send Request</button>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default AlumniProfile;
+</file>
+
+<file path="react-app/src/pages/Dashboard.jsx">
+import API_BASE from '../config/api';
+import React, { useEffect, useState } from 'react';
+import useAuth from '../hooks/useAuth';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+
+
+const Dashboard = () => {
+  const { user, token } = useAuth();
+  const [meData, setMeData] = useState(null);
+  const [stats, setStats] = useState(null);
+
+  useEffect(() => {
+    if (token) {
+      axios.get(`${API_BASE}/api/users/me`, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => setMeData(res.data))
+        .catch(console.error);
+        
+      if (user?.role === 'alumni') {
+        axios.get(`${API_BASE}/api/jobs/my/listings`, { headers: { Authorization: `Bearer ${token}` } })
+          .then(res => {
+            const listings = res.data;
+            const totalApplicants = listings.reduce((acc, curr) => acc + curr.applicants.length, 0);
+            setStats({ listingCount: listings.length, totalApplicants });
+          })
+          .catch(console.error);
+      }
+      
+      if (user?.role === 'admin') {
+        Promise.all([
+          axios.get(`${API_BASE}/api/users/admin/all?limit=1000`, { headers: { Authorization: `Bearer ${token}` } }),
+          axios.get(`${API_BASE}/api/jobs?limit=1000`, { headers: { Authorization: `Bearer ${token}` } })
+        ]).then(([usersRes, jobsRes]) => {
+          setStats({ usersCount: usersRes.data.length, jobsCount: jobsRes.data.length });
+        }).catch(console.error);
+      }
+    }
+  }, [user, token]);
+
+  const handleConnectionResponse = async (requesterId, action) => {
+    try {
+      await axios.put(`http://localhost:5000/api/users/connect/${requesterId}/${action}`, {}, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setMeData(prev => ({
+        ...prev,
+        connectionRequests: prev.connectionRequests.filter(req => req.from._id !== requesterId)
+      }));
+    } catch (err) {
+      alert('Failed to process request');
+    }
+  };
+
+  if (!meData) return <div>Loading...</div>;
+
+  const pendingRequests = meData.connectionRequests.filter(r => r.status === 'pending');
+
+  return (
+    <div>
+      {/* user from JWT only has {id, role} — use meData for the name */}
+      <h2>Welcome back, {meData.name}!</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '20px' }}>
+        <div>
+          <div className="card">
+            <h3>Pending Connection Requests</h3>
+            {pendingRequests.length === 0 ? <p>No pending requests.</p> : (
+              pendingRequests.map(req => (
+                <div key={req.from._id} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', padding: '10px', background: 'var(--bg)', borderRadius: '4px' }}>
+                  <div>
+                    <strong>{req.from.name}</strong>
+                    <div style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>{req.from.designation}</div>
+                  </div>
+                  <div style={{ display: 'flex', gap: '5px' }}>
+                    <button className="btn-primary" onClick={() => handleConnectionResponse(req.from._id, 'accept')}>Accept</button>
+                    <button className="btn-secondary" onClick={() => handleConnectionResponse(req.from._id, 'decline')}>Decline</button>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+          
+          {user.role === 'student' && (
+             <div className="card">
+               <h3>Quick Links</h3>
+               <Link to="/my-applications" className="btn-primary" style={{ display: 'inline-block', textDecoration: 'none' }}>View My Applications</Link>
+             </div>
+          )}
+        </div>
+        
+        <div>
+          {user.role === 'alumni' && stats && (
+            <div className="card">
+              <h3>Alumni Stats</h3>
+              <p>Active Listings: <strong>{stats.listingCount}</strong></p>
+              <p>Total Applicants: <strong>{stats.totalApplicants}</strong></p>
+            </div>
+          )}
+          {user.role === 'admin' && stats && (
+            <div className="card">
+              <h3>Platform Stats</h3>
+              <p>Total Users: <strong>{stats.usersCount}</strong></p>
+              <p>Total Job Listings: <strong>{stats.jobsCount}</strong></p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;
+</file>
+
+<file path="react-app/src/pages/Directory.jsx">
+import API_BASE from '../config/api';
+import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
+import useAuth from '../hooks/useAuth';
+import SearchBar from '../components/SearchBar';
+import FilterPanel from '../components/FilterPanel';
+import ProfileCard from '../components/ProfileCard';
+import { useNavigate } from 'react-router-dom';
+
+const Directory = () => {
+  const { token, user } = useAuth();
+  const [users, setUsers] = useState([]);
+  const [filters, setFilters] = useState({});
+  const [search, setSearch] = useState('');
+  const [meData, setMeData] = useState(null);
+  const navigate = useNavigate();
+
+  const fetchDirectory = async () => {
+    try {
+      const params = { ...filters };
+      if (search) params.search = search;
+      
+      const [dirRes, meRes] = await Promise.all([
+        axios.get(`${API_BASE}/api/users/directory`, {
+          headers: { Authorization: `Bearer ${token}` },
+          params
+        }),
+        axios.get(`${API_BASE}/api/users/me`, {
+          headers: { Authorization: `Bearer ${token}` }
+        })
+      ]);
+      setUsers(dirRes.data.users);
+      setMeData(meRes.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchDirectory();
+  }, [filters, search]);
+
+  const handleConnect = async (targetId) => {
+    try {
+      await axios.post(`http://localhost:5000/api/users/connect/${targetId}`, {}, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      fetchDirectory();
+    } catch (err) {
+      alert(err.response?.data?.message || 'Error sending request');
+    }
+  };
+
+  const getConnectionStatus = (targetId) => {
+    if (!meData) return null;
+    // Already connected
+    if (meData.connections.some(c => c.toString() === targetId.toString())) return 'connected';
+    // Pending request sent by current user — look in target's connectionRequests
+    // We don't have target's connectionRequests here, but meData.connectionRequests shows incoming ones.
+    // To show outgoing pending: check if targetUser appears in meData sent requests isn't available here,
+    // so we store sent IDs in local state after clicking Connect.
+    return null;
+  };
+
+  return (
+    <div>
+      <h2>Alumni Directory</h2>
+      <SearchBar onSearch={setSearch} />
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 3fr', gap: '20px' }}>
+        <div>
+          <FilterPanel onFilter={setFilters} />
+        </div>
+        <div>
+          {users.length === 0 ? <p>No alumni found.</p> : (
+            users.map(u => (
+              <div key={u._id} onClick={(e) => {
+                // Don't navigate if clicking the button
+                if (e.target.tagName !== 'BUTTON') {
+                  navigate(`/alumni/${u._id}`);
+                }
+              }} style={{ cursor: 'pointer' }}>
+                <ProfileCard 
+                  user={u} 
+                  onConnect={handleConnect} 
+                  connectionStatus={getConnectionStatus(u._id)} 
+                />
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Directory;
+</file>
+
+<file path="react-app/src/pages/Login.jsx">
+import API_BASE from '../config/api';
+import React, { useState } from 'react';
+import axios from 'axios';
+import useAuth from '../hooks/useAuth';
+import { useNavigate, Link } from 'react-router-dom';
+
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(`${API_BASE}/api/users/login`, { email, password });
+      login(res.data.token, res.data.user);
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err.response?.data?.message || 'Login failed');
+    }
+  };
+
+  return (
+    <div className="auth-container card">
+      <h2>Login to Alumni Connect</h2>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <input type="email" placeholder="Email" value={email} onChange={e=>setEmail(e.target.value)} required />
+        <input type="password" placeholder="Password" value={password} onChange={e=>setPassword(e.target.value)} required />
+        <button type="submit" className="btn-primary" style={{ width: '100%' }}>Login</button>
+      </form>
+      <p>Don't have an account? <Link to="/register">Register here</Link></p>
+    </div>
+  );
+};
+
+export default Login;
+</file>
+
+<file path="react-app/src/pages/MyApplications.jsx">
+import API_BASE from '../config/api';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import useAuth from '../hooks/useAuth';
+import ApplicationStatusBadge from '../components/ApplicationStatusBadge';
+
+const MyApplications = () => {
+  const { token } = useAuth();
+  const [applications, setApplications] = useState([]);
+
+  useEffect(() => {
+    const fetchApps = async () => {
+      try {
+        const res = await axios.get(`${API_BASE}/api/jobs/my/applications`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        setApplications(res.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchApps();
+  }, [token]);
+
+  return (
+    <div>
+      <h2>My Applications</h2>
+      {applications.length === 0 ? <p>You haven't applied to any opportunities.</p> : (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px' }}>
+          {applications.map((app, i) => (
+            <div key={i} className="card">
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+                <span style={{ textTransform: 'capitalize', color: 'var(--text-secondary)', fontSize: '12px' }}>{app.job.type}</span>
+                <ApplicationStatusBadge status={app.status} />
+              </div>
+              <h3 style={{ margin: '0 0 5px 0' }}>{app.job.title}</h3>
+              <p style={{ margin: '0 0 10px 0', fontWeight: 'bold' }}>{app.job.company}</p>
+              <p style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>Applied on: {new Date(app.appliedAt).toLocaleDateString()}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default MyApplications;
+</file>
+
+<file path="react-app/src/pages/MyListings.jsx">
+import API_BASE from '../config/api';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import useAuth from '../hooks/useAuth';
+import ApplicationStatusBadge from '../components/ApplicationStatusBadge';
+
+const MyListings = () => {
+  const { token } = useAuth();
+  const [listings, setListings] = useState([]);
+  const [expandedId, setExpandedId] = useState(null);
+
+  const fetchListings = async () => {
+    try {
+      const res = await axios.get(`${API_BASE}/api/jobs/my/listings`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setListings(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchListings();
+  }, []);
+
+  const handleStatusUpdate = async (jobId, userId, status) => {
+    try {
+      await axios.put(`http://localhost:5000/api/jobs/${jobId}/applicant/${userId}/status`, { status }, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      fetchListings(); // Refresh to show new status
+    } catch (err) {
+      alert('Failed to update status');
+    }
+  };
+
+  const toggleExpand = (id) => {
+    setExpandedId(expandedId === id ? null : id);
+  };
+
+  return (
+    <div>
+      <h2>My Listings</h2>
+      {listings.length === 0 ? <p>You haven't posted any listings.</p> : (
+        listings.map(job => (
+          <div key={job._id} className="card">
+            <div onClick={() => toggleExpand(job._id)} style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between' }}>
+              <div>
+                <h3 style={{ margin: '0 0 5px 0' }}>{job.title} <span style={{ fontSize: '12px', fontWeight: 'normal', color: 'var(--text-secondary)' }}>({job.isActive ? 'Active' : 'Inactive'})</span></h3>
+                <p style={{ margin: 0, color: 'var(--text-secondary)' }}>Applicants: {job.applicants.length} | Deadline: {job.deadline ? new Date(job.deadline).toLocaleDateString() : 'N/A'}</p>
+              </div>
+              <div>
+                <span style={{ textTransform: 'capitalize', padding: '4px 8px', background: 'var(--bg)', borderRadius: '4px' }}>{job.type}</span>
+              </div>
+            </div>
+
+            {expandedId === job._id && (
+              <div style={{ marginTop: '20px', paddingBefore: '20px', borderTop: '1px solid var(--border)' }}>
+                <h4>Applicants</h4>
+                {job.applicants.length === 0 ? <p>No applicants yet.</p> : (
+                  <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                    <thead>
+                      <tr style={{ textAlign: 'left', borderBottom: '1px solid var(--border)' }}>
+                        <th style={{ padding: '8px' }}>Name</th>
+                        <th style={{ padding: '8px' }}>Email</th>
+                        <th style={{ padding: '8px' }}>Applied On</th>
+                        <th style={{ padding: '8px' }}>Status</th>
+                        <th style={{ padding: '8px' }}>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {job.applicants.map((app, idx) => (
+                        <tr key={app.userId?._id || idx} style={{ borderBottom: '1px solid var(--border)' }}>
+                          <td style={{ padding: '8px' }}>{app.userId?.name}</td>
+                          <td style={{ padding: '8px' }}>{app.userId?.email}</td>
+                          <td style={{ padding: '8px' }}>{new Date(app.appliedAt).toLocaleDateString()}</td>
+                          <td style={{ padding: '8px' }}><ApplicationStatusBadge status={app.status} /></td>
+                          <td style={{ padding: '8px' }}>
+                            {app.userId ? (
+                              <select 
+                                value={app.status} 
+                                onChange={(e) => handleStatusUpdate(job._id, app.userId._id, e.target.value)}
+                                style={{ width: 'auto', marginBottom: 0, padding: '4px' }}
+                              >
+                                <option value="applied">Applied</option>
+                                <option value="under_review">Under Review</option>
+                                <option value="accepted">Accepted</option>
+                                <option value="rejected">Rejected</option>
+                              </select>
+                            ) : <span style={{ color: 'var(--text-secondary)', fontSize: '12px' }}>User deleted</span>}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+              </div>
+            )}
+          </div>
+        ))
+      )}
+    </div>
+  );
+};
+
+export default MyListings;
+</file>
+
+<file path="react-app/src/pages/Networking.jsx">
+import API_BASE from '../config/api';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import useAuth from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+
+const Networking = () => {
+  const { token, user } = useAuth();
+  const navigate = useNavigate();
+  const [conversations, setConversations] = useState([]);
+  const [pendingRequests, setPendingRequests] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      // Fetch conversations
+      const convRes = await axios.get(`${API_BASE}/api/messages/conversations/list`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setConversations(convRes.data);
+
+      // Fetch pending connection requests
+      const meRes = await axios.get(`${API_BASE}/api/users/me`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (meRes.data?.connectionRequests) {
+        setPendingRequests(meRes.data.connectionRequests.filter(r => r.status === 'pending'));
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const acceptRequest = async (requesterId) => {
+    try {
+      await axios.put(`http://localhost:5000/api/users/connect/${requesterId}/accept`, {}, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setPendingRequests(prev => prev.filter(r => r.from._id !== requesterId));
+      alert('Connection accepted!');
+    } catch (err) {
+      alert(err.response?.data?.message || 'Error accepting request');
+    }
+  };
+
+  const getOtherParticipant = (participants) => {
+    return participants?.find(p => p._id !== user?.id) || {};
+  };
+
+  const openChat = (conv) => {
+    const other = getOtherParticipant(conv.participants);
+    if (other._id) {
+      navigate(`/alumni/${other._id}`);
+    }
+  };
+
+  return (
+    <div>
+      <h2>Networking &amp; Connections</h2>
+
+      {pendingRequests.length > 0 && (
+        <div className="card" style={{ marginBottom: '20px' }}>
+          <h3 style={{ marginTop: 0 }}>Pending Requests</h3>
+          {pendingRequests.map(req => (
+            <div key={req.from._id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 0', borderBottom: '1px solid var(--border, #eee)' }}>
+              <div>
+                <strong style={{ fontSize: '16px' }}>{req.from.name}</strong>
+                <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-secondary)' }}>{req.from.designation}</p>
+              </div>
+              <button className="btn-primary" onClick={() => acceptRequest(req.from._id)}>
+                Accept
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div className="card">
+        <h3 style={{ marginTop: 0 }}>Recent Conversations</h3>
+        {conversations.length === 0 ? (
+          <p style={{ color: 'var(--text-secondary)' }}>No conversations yet.</p>
+        ) : (
+          conversations.map(conv => {
+            const other = getOtherParticipant(conv.participants);
+            return (
+              <div
+                key={conv._id}
+                onClick={() => openChat(conv)}
+                style={{ cursor: 'pointer', padding: '15px 0', borderBottom: '1px solid var(--border, #eee)', display: 'flex', alignItems: 'center', gap: '15px' }}
+              >
+                <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'var(--accent, #1a73e8)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '20px', flexShrink: 0 }}>
+                  {other.name?.charAt(0)?.toUpperCase() || '?'}
+                </div>
+                <div style={{ flex: 1 }}>
+                  <h4 style={{ margin: '0 0 4px 0' }}>{other.name}</h4>
+                  <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '14px' }}>{other.designation || (other.role ? other.role.charAt(0).toUpperCase() + other.role.slice(1) : 'User')}</p>
+                </div>
+              </div>
+            );
+          })
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Networking;
+</file>
+
+<file path="react-app/src/pages/Notifications.jsx">
+import API_BASE from '../config/api';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import useAuth from '../hooks/useAuth';
+
+const typeIcon = (type) => {
+  if (type === 'new_message') return '💬';
+  if (type === 'connection_request' || type === 'connection_accepted') return '🤝';
+  if (type === 'job_application' || type === 'application_status') return '💼';
+  return '🔔';
+};
+
+const Notifications = () => {
+  const { token } = useAuth();
+  const [notifications, setNotifications] = useState([]);
+  const [unreadCount, setUnreadCount] = useState(0);
+
+  const fetchNotifications = async () => {
+    try {
+      const res = await axios.get(`${API_BASE}/api/notify`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setNotifications(res.data);
+      const unread = res.data.filter(n => !n.read).length;
+      setUnreadCount(unread);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchNotifications();
+  }, []);
+
+  const markAllRead = async () => {
+    try {
+      await axios.put(`${API_BASE}/api/notify/read-all`, {}, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      fetchNotifications();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const markAsRead = async (id, alreadyRead) => {
+    if (alreadyRead) return;
+    try {
+      await axios.put(`http://localhost:5000/api/notify/${id}/read`, {}, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      fetchNotifications();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  return (
+    <div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+        <h2 style={{ margin: 0 }}>Notifications</h2>
+        {unreadCount > 0 && (
+          <button className="btn-primary" onClick={markAllRead}>
+            Mark All Read ({unreadCount})
+          </button>
+        )}
+      </div>
+
+      {notifications.length === 0 ? (
+        <p style={{ color: 'var(--text-secondary)' }}>No notifications.</p>
+      ) : (
+        notifications.map(notif => (
+          <div
+            key={notif._id}
+            className="card"
+            onClick={() => markAsRead(notif._id, notif.read)}
+            style={{
+              display: 'flex',
+              gap: '15px',
+              alignItems: 'flex-start',
+              padding: '15px',
+              cursor: notif.read ? 'default' : 'pointer',
+              background: notif.read ? 'var(--card-bg, white)' : '#e8f5e9',
+              marginBottom: '10px',
+              transition: 'background 0.2s'
+            }}
+          >
+            <div style={{ fontSize: '24px', paddingTop: '2px' }}>
+              {typeIcon(notif.type)}
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
+                <strong>{notif.fromUser?.name || 'System'}</strong>
+                <small style={{ color: 'var(--text-secondary)' }}>
+                  {new Date(notif.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                </small>
+              </div>
+              <p style={{ margin: 0, color: 'var(--text-secondary)' }}>{notif.message}</p>
+            </div>
+            {!notif.read && (
+              <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: 'var(--success, #4caf50)', marginTop: '8px', flexShrink: 0 }} />
+            )}
+          </div>
+        ))
+      )}
+    </div>
+  );
+};
+
+export default Notifications;
+</file>
+
+<file path="react-app/src/pages/Opportunities.jsx">
+import API_BASE from '../config/api';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import useAuth from '../hooks/useAuth';
+import JobCard from '../components/JobCard';
+
+const Opportunities = () => {
+  const { token, user } = useAuth();
+  const [jobs, setJobs] = useState([]);
+  const [filters, setFilters] = useState({ type: 'all', skills: '' });
+
+  const fetchJobs = async () => {
+    try {
+      const params = {};
+      if (filters.type !== 'all') params.type = filters.type;
+      if (filters.skills) params.skills = filters.skills;
+
+      const res = await axios.get(`${API_BASE}/api/jobs`, {
+        headers: { Authorization: `Bearer ${token}` },
+        params
+      });
+      setJobs(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchJobs();
+  }, [filters]);
+
+  const handleApply = async (jobId) => {
+    try {
+      await axios.post(`http://localhost:5000/api/jobs/${jobId}/apply`, {}, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      alert('Applied successfully!');
+      fetchJobs();
+    } catch (err) {
+      alert(err.response?.data?.message || 'Error applying');
+    }
+  };
+
+  return (
+    <div>
+      <h2>Opportunities</h2>
+      <div className="card" style={{ display: 'flex', gap: '15px', background: 'var(--bg)' }}>
+        <select value={filters.type} onChange={e=>setFilters({...filters, type: e.target.value})} style={{ width: '200px', marginBottom: 0 }}>
+          <option value="all">All Types</option>
+          <option value="job">Job</option>
+          <option value="internship">Internship</option>
+          <option value="mentorship">Mentorship</option>
+        </select>
+        <input 
+          type="text" 
+          placeholder="Filter by skills (comma separated)" 
+          value={filters.skills} 
+          onChange={e=>setFilters({...filters, skills: e.target.value})}
+          style={{ marginBottom: 0 }}
+        />
+        <button className="btn-secondary" onClick={() => setFilters({ type: 'all', skills: '' })}>Clear</button>
+      </div>
+
+      <div style={{ marginTop: '20px' }}>
+        {jobs.length === 0 ? <p>No opportunities found.</p> : (
+          jobs.map(job => (
+            <JobCard 
+              key={job._id} 
+              job={job} 
+              onApply={handleApply} 
+              hasApplied={job.applicants?.some(a => a.userId?.toString() === user?.id?.toString())} 
+              isStudent={user?.role === 'student'}
+            />
+          ))
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Opportunities;
+</file>
+
+<file path="react-app/src/pages/PostJob.jsx">
+import API_BASE from '../config/api';
+import React, { useState } from 'react';
+import axios from 'axios';
+import useAuth from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+
+const PostJob = () => {
+  const { token } = useAuth();
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    title: '', company: '', type: 'job', description: '', requiredSkills: '', deadline: ''
+  });
+
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const payload = { 
+        ...formData, 
+        requiredSkills: formData.requiredSkills.split(',').map(s => s.trim()).filter(s => s),
+        deadline: formData.deadline ? new Date(formData.deadline).toISOString() : null
+      };
+
+      await axios.post(`${API_BASE}/api/jobs`, payload, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      alert('Job posted successfully!');
+      navigate('/my-listings');
+    } catch (err) {
+      alert(err.response?.data?.message || 'Error posting job');
+    }
+  };
+
+  return (
+    <div className="card" style={{ maxWidth: '600px', margin: '0 auto' }}>
+      <h2>Post an Opportunity</h2>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="title" placeholder="Job Title" onChange={handleChange} required />
+        <input type="text" name="company" placeholder="Company Name" onChange={handleChange} required />
+        <select name="type" onChange={handleChange} value={formData.type}>
+          <option value="job">Job</option>
+          <option value="internship">Internship</option>
+          <option value="mentorship">Mentorship</option>
+        </select>
+        <textarea name="description" placeholder="Description" rows="5" onChange={handleChange} required></textarea>
+        <input type="text" name="requiredSkills" placeholder="Required Skills (comma separated)" onChange={handleChange} />
+        <label style={{ display: 'block', marginBottom: '5px' }}>Deadline (optional)</label>
+        <input type="date" name="deadline" onChange={handleChange} />
+        
+        <button type="submit" className="btn-primary" style={{ width: '100%', marginTop: '10px' }}>Post</button>
+      </form>
+    </div>
+  );
+};
+
+export default PostJob;
+</file>
+
+<file path="react-app/src/pages/Register.jsx">
+import API_BASE from '../config/api';
+import React, { useState } from 'react';
+import axios from 'axios';
+import useAuth from '../hooks/useAuth';
+import { useNavigate, Link } from 'react-router-dom';
+
+const Register = () => {
+  const [formData, setFormData] = useState({
+    name: '', email: '', password: '', role: 'student', batch: '', department: ''
+  });
+  const [error, setError] = useState('');
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const payload = { ...formData, batch: Number(formData.batch) };
+      const res = await axios.post(`${API_BASE}/api/users/register`, payload);
+      login(res.data.token, res.data.user);
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err.response?.data?.message || 'Registration failed');
+    }
+  };
+
+  return (
+    <div className="auth-container card">
+      <h2>Register</h2>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="name" placeholder="Full Name" onChange={handleChange} required />
+        <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
+        <input type="password" name="password" placeholder="Password (min 6 chars)" onChange={handleChange} required />
+        <select name="role" onChange={handleChange} value={formData.role}>
+          <option value="student">Student</option>
+          <option value="alumni">Alumni</option>
+        </select>
+        <input type="number" name="batch" placeholder="Batch Year (e.g. 2024)" onChange={handleChange} required />
+        <input type="text" name="department" placeholder="Department" onChange={handleChange} required />
+        
+        <button type="submit" className="btn-primary" style={{ width: '100%' }}>Register</button>
+      </form>
+      <p>Already have an account? <Link to="/login">Login here</Link></p>
+    </div>
+  );
+};
+
+export default Register;
+</file>
+
+<file path="backend/server.js">
+require('dotenv').config();
+const express = require('express');
+const http = require('http');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const path = require('path');
+const { Server } = require('socket.io');
+
+const apiGateway = require('./gateway');
+const socketHandler = require('./socket/socketHandler');
+
+const app = express();
+const server = http.createServer(app);
+
+const isProduction = process.env.NODE_ENV === 'production';
+
+// Determine allowed origins based on environment
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(',')
+  : ['http://localhost:5173', 'http://localhost:4200'];
+
+// Attach Socket.io with CORS
+const io = new Server(server, {
+  cors: {
+    origin: isProduction ? '*' : allowedOrigins,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+  }
+});
+
+// Middleware
+app.use(cors({
+  origin: isProduction ? '*' : allowedOrigins,
+  credentials: true
+}));
+app.use(express.json());
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('MongoDB connection error:', err));
+
+// Mount API Gateway
+app.use('/api', apiGateway);
+
+// Serve React build in production
+if (isProduction) {
+  const reactBuild = path.join(__dirname, '../react-app/dist');
+  app.use(express.static(reactBuild));
+
+  // All non-API routes serve the React app
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(reactBuild, 'index.html'));
+  });
+}
+
+// Socket.io handler
+socketHandler(io);
+
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+</file>
+
+</files>

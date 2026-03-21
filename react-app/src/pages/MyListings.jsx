@@ -3,13 +3,17 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
 import ApplicationStatusBadge from '../components/ApplicationStatusBadge';
+import { useToast } from '../context/ToastContext';
 
 const MyListings = () => {
   const { token } = useAuth();
+  const { showToast } = useToast();
   const [listings, setListings] = useState([]);
   const [expandedId, setExpandedId] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const fetchListings = async () => {
+    setLoading(true);
     try {
       const res = await axios.get(`${API_BASE}/api/jobs/my/listings`, {
         headers: { Authorization: `Bearer ${token}` }
@@ -17,6 +21,8 @@ const MyListings = () => {
       setListings(res.data);
     } catch (err) {
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -26,18 +32,24 @@ const MyListings = () => {
 
   const handleStatusUpdate = async (jobId, userId, status) => {
     try {
-      await axios.put(`http://localhost:5000/api/jobs/${jobId}/applicant/${userId}/status`, { status }, {
+      await axios.put(`${API_BASE}/api/jobs/${jobId}/applicant/${userId}/status`, { status }, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      fetchListings(); // Refresh to show new status
+      fetchListings();
     } catch (err) {
-      alert('Failed to update status');
+      showToast('Failed to update status', 'error');
     }
   };
 
   const toggleExpand = (id) => {
     setExpandedId(expandedId === id ? null : id);
   };
+
+  if (loading) return (
+    <div style={{ display: 'flex', justifyContent: 'center', padding: '60px' }}>
+      <div style={{ width: '40px', height: '40px', border: '4px solid var(--border)', borderTop: '4px solid var(--primary)', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+    </div>
+  );
 
   return (
     <div>
@@ -78,8 +90,8 @@ const MyListings = () => {
                           <td style={{ padding: '8px' }}><ApplicationStatusBadge status={app.status} /></td>
                           <td style={{ padding: '8px' }}>
                             {app.userId ? (
-                              <select 
-                                value={app.status} 
+                              <select
+                                value={app.status}
                                 onChange={(e) => handleStatusUpdate(job._id, app.userId._id, e.target.value)}
                                 style={{ width: 'auto', marginBottom: 0, padding: '4px' }}
                               >

@@ -3,43 +3,51 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../hooks/useAuth';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import { useToast } from '../context/ToastContext';
 
 const Dashboard = () => {
   const { user, token } = useAuth();
+  const { showToast } = useToast();
   const [meData, setMeData] = useState(null);
   const [stats, setStats] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (token) {
-      axios.get(`${API_BASE}/api/users/me`, { headers: { Authorization: `Bearer ${token}` } })
-        .then(res => setMeData(res.data))
-        .catch(console.error);
-        
-      if (user?.role === 'alumni') {
-        axios.get(`${API_BASE}/api/jobs/my/listings`, { headers: { Authorization: `Bearer ${token}` } })
-          .then(res => {
-            const listings = res.data;
-            const totalApplicants = listings.reduce((acc, curr) => acc + curr.applicants.length, 0);
-            setStats({ listingCount: listings.length, totalApplicants });
-          })
-          .catch(console.error);
-      }
-      
-      if (user?.role === 'admin') {
-        Promise.all([
-          axios.get(`${API_BASE}/api/users/admin/all?limit=1000`, { headers: { Authorization: `Bearer ${token}` } }),
-          axios.get(`${API_BASE}/api/jobs?limit=1000`, { headers: { Authorization: `Bearer ${token}` } })
-        ]).then(([usersRes, jobsRes]) => {
-          setStats({ usersCount: usersRes.data.length, jobsCount: jobsRes.data.length });
-        }).catch(console.error);
-      }
+      fetchData();
     }
   }, [user, token]);
 
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const meRes = await axios.get(`${API_BASE}/api/users/me`, { headers: { Authorization: `Bearer ${token}` } });
+      setMeData(meRes.data);
+
+      if (user?.role === 'alumni') {
+        const listingsRes = await axios.get(`${API_BASE}/api/jobs/my/listings`, { headers: { Authorization: `Bearer ${token}` } });
+        const listings = listingsRes.data;
+        const totalApplicants = listings.reduce((acc, curr) => acc + curr.applicants.length, 0);
+        setStats({ listingCount: listings.length, totalApplicants });
+      }
+
+      if (user?.role === 'admin') {
+        const [usersRes, jobsRes] = await Promise.all([
+          axios.get(`${API_BASE}/api/users/admin/all?limit=1000`, { headers: { Authorization: `Bearer ${token}` } }),
+          axios.get(`${API_BASE}/api/jobs?limit=1000`, { headers: { Authorization: `Bearer ${token}` } })
+        ]);
+        setStats({ usersCount: usersRes.data.length, jobsCount: jobsRes.data.length });
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleConnectionResponse = async (requesterId, action) => {
     try {
-      await axios.put(`http://localhost:5000/api/users/connect/${requesterId}/${action}`, {}, {
+      await axios.put(`${API_BASE}/api/users/connect/${requesterId}/${action}`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMeData(prev => ({
@@ -47,11 +55,17 @@ const Dashboard = () => {
         connectionRequests: prev.connectionRequests.filter(req => req.from._id !== requesterId)
       }));
     } catch (err) {
-      alert('Failed to process request');
+      showToast('Failed to process request', 'error');
     }
   };
 
-  if (!meData) return <div>Loading...</div>;
+  if (loading) return (
+    <div style={{ display: 'flex', justifyContent: 'center', padding: '60px' }}>
+      <div style={{ width: '40px', height: '40px', border: '4px solid var(--border)', borderTop: '4px solid var(--primary)', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+    </div>
+  );
+
+  if (!meData) return <div>Could not load dashboard.</div>;
 
   const pendingRequests = meData.connectionRequests.filter(r => r.status === 'pending');
 
@@ -78,7 +92,7 @@ const Dashboard = () => {
               ))
             )}
           </div>
-          
+
           {user.role === 'student' && (
              <div className="card">
                <h3>Quick Links</h3>
@@ -86,7 +100,7 @@ const Dashboard = () => {
              </div>
           )}
         </div>
-        
+
         <div>
           {user.role === 'alumni' && stats && (
             <div className="card">

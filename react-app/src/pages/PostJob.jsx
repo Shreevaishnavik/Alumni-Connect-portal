@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import { useToast } from '../context/ToastContext';
 
 const PostJob = () => {
   const { token } = useAuth();
+  const { showToast } = useToast();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: '', company: '', type: 'job', description: '', requiredSkills: '', deadline: ''
@@ -16,8 +18,8 @@ const PostJob = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const payload = { 
-        ...formData, 
+      const payload = {
+        ...formData,
         requiredSkills: formData.requiredSkills.split(',').map(s => s.trim()).filter(s => s),
         deadline: formData.deadline ? new Date(formData.deadline).toISOString() : null
       };
@@ -25,10 +27,10 @@ const PostJob = () => {
       await axios.post(`${API_BASE}/api/jobs`, payload, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      alert('Job posted successfully!');
+      showToast('Job posted successfully!', 'success');
       navigate('/my-listings');
     } catch (err) {
-      alert(err.response?.data?.message || 'Error posting job');
+      showToast(err.response?.data?.message || 'Error posting job', 'error');
     }
   };
 
@@ -47,7 +49,7 @@ const PostJob = () => {
         <input type="text" name="requiredSkills" placeholder="Required Skills (comma separated)" onChange={handleChange} />
         <label style={{ display: 'block', marginBottom: '5px' }}>Deadline (optional)</label>
         <input type="date" name="deadline" onChange={handleChange} />
-        
+
         <button type="submit" className="btn-primary" style={{ width: '100%', marginTop: '10px' }}>Post</button>
       </form>
     </div>

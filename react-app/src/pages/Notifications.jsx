@@ -14,8 +14,10 @@ const Notifications = () => {
   const { token } = useAuth();
   const [notifications, setNotifications] = useState([]);
   const [unreadCount, setUnreadCount] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   const fetchNotifications = async () => {
+    setLoading(true);
     try {
       const res = await axios.get(`${API_BASE}/api/notify`, {
         headers: { Authorization: `Bearer ${token}` }
@@ -25,6 +27,8 @@ const Notifications = () => {
       setUnreadCount(unread);
     } catch (err) {
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -46,7 +50,7 @@ const Notifications = () => {
   const markAsRead = async (id, alreadyRead) => {
     if (alreadyRead) return;
     try {
-      await axios.put(`http://localhost:5000/api/notify/${id}/read`, {}, {
+      await axios.put(`${API_BASE}/api/notify/${id}/read`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchNotifications();
@@ -54,6 +58,12 @@ const Notifications = () => {
       console.error(err);
     }
   };
+
+  if (loading) return (
+    <div style={{ display: 'flex', justifyContent: 'center', padding: '60px' }}>
+      <div style={{ width: '40px', height: '40px', border: '4px solid var(--border)', borderTop: '4px solid var(--primary)', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+    </div>
+  );
 
   return (
     <div>

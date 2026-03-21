@@ -82,7 +82,8 @@ exports.getProfile = async (req, res) => {
     }
     const user = await User.findById(req.params.id)
       .select('-password')
-      .populate('connections', 'name designation company');
+      .populate('connections', 'name designation company')
+      .populate('connectionRequests.from', '_id');
     if (!user) return res.status(404).json({ message: 'User not found' });
     res.json(user);
   } catch (err) {

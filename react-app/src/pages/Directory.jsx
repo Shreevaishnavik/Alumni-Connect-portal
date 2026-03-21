@@ -1,25 +1,31 @@
 import API_BASE from '../config/api';
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
 import SearchBar from '../components/SearchBar';
 import FilterPanel from '../components/FilterPanel';
 import ProfileCard from '../components/ProfileCard';
 import { useNavigate } from 'react-router-dom';
+import { useToast } from '../context/ToastContext';
 
 const Directory = () => {
   const { token, user } = useAuth();
+  const { showToast } = useToast();
   const [users, setUsers] = useState([]);
   const [filters, setFilters] = useState({});
   const [search, setSearch] = useState('');
   const [meData, setMeData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [sentRequests, setSentRequests] = useState(new Set());
+  const [connecting, setConnecting] = useState(null);
   const navigate = useNavigate();
 
   const fetchDirectory = async () => {
+    setLoading(true);
     try {
       const params = { ...filters };
       if (search) params.search = search;
-      
+
       const [dirRes, meRes] = await Promise.all([
         axios.get(`${API_BASE}/api/users/directory`, {
           headers: { Authorization: `Bearer ${token}` },
@@ -33,6 +39,8 @@ const Directory = () => {
       setMeData(meRes.data);
     } catch (err) {
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -41,26 +49,31 @@ const Directory = () => {
   }, [filters, search]);
 
   const handleConnect = async (targetId) => {
+    setConnecting(targetId);
     try {
-      await axios.post(`http://localhost:5000/api/users/connect/${targetId}`, {}, {
+      await axios.post(`${API_BASE}/api/users/connect/${targetId}`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      fetchDirectory();
+      setSentRequests(prev => new Set([...prev, targetId.toString()]));
     } catch (err) {
-      alert(err.response?.data?.message || 'Error sending request');
+      showToast(err.response?.data?.message || 'Error sending request', 'error');
+    } finally {
+      setConnecting(null);
     }
   };
 
   const getConnectionStatus = (targetId) => {
     if (!meData) return null;
-    // Already connected
     if (meData.connections.some(c => c.toString() === targetId.toString())) return 'connected';
-    // Pending request sent by current user — look in target's connectionRequests
-    // We don't have target's connectionRequests here, but meData.connectionRequests shows incoming ones.
-    // To show outgoing pending: check if targetUser appears in meData sent requests isn't available here,
-    // so we store sent IDs in local state after clicking Connect.
+    if (sentRequests.has(targetId.toString())) return 'pending';
     return null;
   };
+
+  if (loading) return (
+    <div style={{ display: 'flex', justifyContent: 'center', padding: '60px' }}>
+      <div style={{ width: '40px', height: '40px', border: '4px solid var(--border)', borderTop: '4px solid var(--primary)', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+    </div>
+  );
 
   return (
     <div>
@@ -74,15 +87,15 @@ const Directory = () => {
           {users.length === 0 ? <p>No alumni found.</p> : (
             users.map(u => (
               <div key={u._id} onClick={(e) => {
-                // Don't navigate if clicking the button
                 if (e.target.tagName !== 'BUTTON') {
                   navigate(`/alumni/${u._id}`);
                 }
               }} style={{ cursor: 'pointer' }}>
-                <ProfileCard 
-                  user={u} 
-                  onConnect={handleConnect} 
-                  connectionStatus={getConnectionStatus(u._id)} 
+                <ProfileCard
+                  user={u}
+                  onConnect={handleConnect}
+                  connectionStatus={getConnectionStatus(u._id)}
+                  connecting={connecting === u._id}
                 />
               </div>
             ))

@@ -2,10 +2,12 @@ import API_BASE from '../config/api';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
+import { useToast } from '../context/ToastContext';
 
 const AdminPanel = () => {
   const { token } = useAuth();
-  const [tab, setTab] = useState('users'); // users, listings, stats
+  const { showToast } = useToast();
+  const [tab, setTab] = useState('users');
   const [users, setUsers] = useState([]);
   const [jobs, setJobs] = useState([]);
 
@@ -25,8 +27,6 @@ const AdminPanel = () => {
 
   const fetchJobs = async () => {
     try {
-      // Actually /api/jobs only returns active jobs and needs no admin check,
-      // But for admin to delete, they can use it.
       const res = await axios.get(`${API_BASE}/api/jobs`, {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -35,26 +35,26 @@ const AdminPanel = () => {
   };
 
   const handleDeleteUser = async (id) => {
-    if(!window.confirm('Are you sure?')) return;
+    if (!window.confirm('Are you sure?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/users/admin/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+      await axios.delete(`${API_BASE}/api/users/admin/${id}`, { headers: { Authorization: `Bearer ${token}` } });
       fetchUsers();
-    } catch (err) { alert('Failed to delete user'); }
+    } catch (err) { showToast('Failed to delete user', 'error'); }
   };
 
   const handleRoleChange = async (id, newRole) => {
     try {
-      await axios.put(`http://localhost:5000/api/users/admin/${id}/role`, { role: newRole }, { headers: { Authorization: `Bearer ${token}` } });
+      await axios.put(`${API_BASE}/api/users/admin/${id}/role`, { role: newRole }, { headers: { Authorization: `Bearer ${token}` } });
       fetchUsers();
-    } catch (err) { alert('Failed to change role'); }
+    } catch (err) { showToast('Failed to change role', 'error'); }
   };
 
   const handleDeleteJob = async (id) => {
-    if(!window.confirm('Delete this listing?')) return;
+    if (!window.confirm('Delete this listing?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/jobs/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+      await axios.delete(`${API_BASE}/api/jobs/${id}`, { headers: { Authorization: `Bearer ${token}` } });
       fetchJobs();
-    } catch (err) { alert('Failed to delete listing'); }
+    } catch (err) { showToast('Failed to delete listing', 'error'); }
   };
 
   const renderStats = () => {
@@ -145,7 +145,6 @@ const AdminPanel = () => {
           </table>
         </div>
       )}
-
     </div>
   );
 };

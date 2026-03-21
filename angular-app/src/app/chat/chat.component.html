@@ -1,5 +1,9 @@
 <div class="card chat-container">
-  <div class="messages">
+  <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+    <button class="btn-secondary" (click)="goBack()">← Back</button>
+    <h3 style="margin: 0;">Chat</h3>
+  </div>
+  <div class="messages" #messagesContainer>
     <div *ngFor="let msg of messages$ | async"
          [class]="msg.senderId === currentUserId ? 'my-message' : 'their-message'">
       <span>{{ msg.text }}</span>

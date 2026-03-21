@@ -2,27 +2,27 @@ import API_BASE from '../config/api';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
-import { useNavigate } from 'react-router-dom';
+import { useToast } from '../context/ToastContext';
 
 const Networking = () => {
   const { token, user } = useAuth();
-  const navigate = useNavigate();
+  const { showToast } = useToast();
   const [conversations, setConversations] = useState([]);
   const [pendingRequests, setPendingRequests] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
+    setLoading(true);
     try {
-      // Fetch conversations
       const convRes = await axios.get(`${API_BASE}/api/messages/conversations/list`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setConversations(convRes.data);
 
-      // Fetch pending connection requests
       const meRes = await axios.get(`${API_BASE}/api/users/me`, {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -31,18 +31,20 @@ const Networking = () => {
       }
     } catch (err) {
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
   const acceptRequest = async (requesterId) => {
     try {
-      await axios.put(`http://localhost:5000/api/users/connect/${requesterId}/accept`, {}, {
+      await axios.put(`${API_BASE}/api/users/connect/${requesterId}/accept`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setPendingRequests(prev => prev.filter(r => r.from._id !== requesterId));
-      alert('Connection accepted!');
+      showToast('Connection accepted!', 'success');
     } catch (err) {
-      alert(err.response?.data?.message || 'Error accepting request');
+      showToast(err.response?.data?.message || 'Error accepting request', 'error');
     }
   };
 
@@ -53,9 +55,15 @@ const Networking = () => {
   const openChat = (conv) => {
     const other = getOtherParticipant(conv.participants);
     if (other._id) {
-      navigate(`/alumni/${other._id}`);
+      window.location.href = `http://localhost:4200/chat/${other._id}?token=${token}&userId=${user?.id}`;
     }
   };
+
+  if (loading) return (
+    <div style={{ display: 'flex', justifyContent: 'center', padding: '60px' }}>
+      <div style={{ width: '40px', height: '40px', border: '4px solid var(--border)', borderTop: '4px solid var(--primary)', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+    </div>
+  );
 
   return (
     <div>
