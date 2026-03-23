@@ -1,12 +1,13 @@
 import API_BASE, { ANGULAR_URL } from '../config/api';
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
 import { useToast } from '../context/ToastContext';
 
 const AlumniProfile = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { token, user: currentUser } = useAuth();
   const { showToast } = useToast();
   const [profile, setProfile] = useState(null);
@@ -136,6 +137,31 @@ const AlumniProfile = () => {
               ) : (
                 <button className="btn-primary" onClick={handleConnect}>Send Request</button>
               )}
+            </div>
+          )}
+
+          {/* Display Connections List */}
+          {profile.connections && profile.connections.length > 0 && (
+            <div style={{ marginTop: '30px', borderTop: '1px solid var(--border)', paddingTop: '20px' }}>
+              <h3 style={{ marginBottom: '15px' }}>Connections ({profile.connections.length})</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '15px' }}>
+                {profile.connections.map(conn => (
+                  <div 
+                    key={conn._id} 
+                    className="card" 
+                    style={{ padding: '15px', cursor: 'pointer', margin: 0, boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} 
+                    onClick={() => {
+                      navigate(`/alumni/${conn._id}`);
+                      window.scrollTo(0, 0); // Scroll to top when changing profile
+                    }}
+                  >
+                    <h5 style={{ margin: '0 0 5px 0' }}>{conn.name}</h5>
+                    <p style={{ margin: 0, fontSize: '0.9em', color: 'var(--text-secondary)' }}>
+                      {conn.designation} {conn.company && `at ${conn.company}`}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>
