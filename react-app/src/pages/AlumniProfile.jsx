@@ -141,9 +141,10 @@ const AlumniProfile = () => {
           )}
 
           {/* Display Connections List */}
-          {profile.connections && profile.connections.length > 0 && (
-            <div style={{ marginTop: '30px', borderTop: '1px solid var(--border)', paddingTop: '20px' }}>
-              <h3 style={{ marginBottom: '15px' }}>Connections ({profile.connections.length})</h3>
+          <div style={{ marginTop: '30px', borderTop: '1px solid var(--border)', paddingTop: '20px' }}>
+            <h3 style={{ marginBottom: '15px' }}>Connections ({profile.connections?.length || 0})</h3>
+            
+            {profile.connections && profile.connections.length > 0 ? (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '15px' }}>
                 {profile.connections.map(conn => (
                   <div 
@@ -162,8 +163,12 @@ const AlumniProfile = () => {
                   </div>
                 ))}
               </div>
-            </div>
-          )}
+            ) : (
+              <p style={{ color: 'var(--text-secondary)', fontStyle: 'italic' }}>
+                This user doesn't have any connections yet.
+              </p>
+            )}
+          </div>
         </div>
       )}
     </div>
