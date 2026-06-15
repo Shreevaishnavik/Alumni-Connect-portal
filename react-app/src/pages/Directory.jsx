@@ -96,6 +96,7 @@ const Directory = () => {
                   onConnect={handleConnect}
                   connectionStatus={getConnectionStatus(u._id)}
                   connecting={connecting === u._id}
+                  currentUserRole={user?.role}
                 />
               </div>
             ))

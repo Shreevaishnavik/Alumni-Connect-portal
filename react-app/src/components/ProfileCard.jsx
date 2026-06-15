@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProfileCard = ({ user, onConnect, connectionStatus, connecting }) => {
+const ProfileCard = ({ user, onConnect, connectionStatus, connecting, currentUserRole }) => {
   const { name, designation, company, batch, skills, role } = user;
   
   const getInitials = (n) => n ? n.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase() : '?';
@@ -37,7 +37,7 @@ const ProfileCard = ({ user, onConnect, connectionStatus, connecting }) => {
         </div>
       </div>
       <div style={{ flexShrink: 0 }}>
-        {connectionStatus === 'connected' ? (
+        {currentUserRole === 'alumni' ? null : connectionStatus === 'connected' ? (
           <button className="btn-secondary" disabled style={{ opacity: 0.7 }}>✓ Connected</button>
         ) : connectionStatus === 'pending' ? (
           <button className="btn-secondary" disabled style={{ opacity: 0.7 }}>Pending…</button>

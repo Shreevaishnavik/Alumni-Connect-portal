@@ -121,6 +121,12 @@ exports.sendConnectionRequest = async (req, res) => {
     const targetUser = await User.findById(targetId);
     if (!targetUser) return res.status(404).json({ message: 'User not found' });
 
+    // Only students can send connection requests to alumni
+    const sender = await User.findById(req.user.id);
+    if (sender.role === 'alumni' && targetUser.role === 'alumni') {
+      return res.status(403).json({ message: 'Alumni cannot connect with other alumni' });
+    }
+
     const alreadyConnected = targetUser.connections.some(c => c.toString() === req.user.id);
     if (alreadyConnected) return res.status(400).json({ message: 'Already connected' });
 

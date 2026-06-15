@@ -128,7 +128,7 @@ const AlumniProfile = () => {
             ))}
           </div>
 
-          {!isOwnProfile && (
+          {!isOwnProfile && currentUser.role === 'student' && (
             <div style={{ marginTop: '20px', borderTop: '1px solid var(--border)', paddingTop: '20px' }}>
               {isConnected ? (
                 <a href={`${ANGULAR_URL}/chat/${profile._id}?userId=${currentUser.id}&token=${token}&backendUrl=${encodeURIComponent(API_BASE || window.location.origin)}`} className="btn-primary" style={{ textDecoration: 'none', display: 'inline-block' }}>Open Chat</a>
