@@ -77,6 +77,11 @@ exports.applyForJob = async (req, res) => {
       return res.status(400).json({ message: 'This job posting is no longer active' });
     }
 
+    // Block applications if the deadline has already passed
+    if (job.deadline && new Date(job.deadline) < new Date()) {
+      return res.status(400).json({ message: 'The deadline for this opportunity has passed' });
+    }
+
     const alreadyApplied = job.applicants.some(a => a.userId.toString() === req.user.id);
     if (alreadyApplied) return res.status(400).json({ message: 'Already applied' });
 

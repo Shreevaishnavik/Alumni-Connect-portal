@@ -8,6 +8,7 @@ const { Server } = require('socket.io');
 
 const apiGateway = require('./gateway');
 const socketHandler = require('./socket/socketHandler');
+const startDeadlineScheduler = require('./jobs/deadlineScheduler');
 
 const app = express();
 const server = http.createServer(app);
@@ -36,7 +37,10 @@ app.use(express.json());
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('Connected to MongoDB'))
+  .then(() => {
+    console.log('Connected to MongoDB');
+    startDeadlineScheduler();
+  })
   .catch(err => console.error('MongoDB connection error:', err));
 
 // Mount API Gateway
